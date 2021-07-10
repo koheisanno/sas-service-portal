@@ -1,0 +1,112 @@
+from django.db import models
+from django.contrib.auth.models import User
+from datetime import date
+from django.contrib.postgres.fields import HStoreField
+from datetime import datetime
+
+from colorfield.fields import ColorField
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userProfile")
+
+    classOf = models.PositiveIntegerField(null=True, blank=True)
+    firstName = models.CharField(max_length=50)
+    lastName = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    hours = HStoreField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['firstName']
+
+    def __str__(self):
+        return self.firstName + " " + self.lastName
+
+    def update_hours(self):
+        hours_dict = {}
+        records = self.records.all()
+        for record in records:
+            if record.club.name in hours_dict:
+                hours_dict[record.club.name]+=record.hours
+            else:
+                hours_dict[record.club.name]=record.hours
+
+        self.hours = hours_dict
+        self.save()
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Club(models.Model):
+
+    EDUCATION_FOR_ALL = 'ED4ALL'
+    GLOBAL_ISSUES = 'GI'
+    SAS_CENTRIC = 'SASCENTRIC'
+    HELP_FOR_DISABLED_AND_ILL = 'H4DI'
+    POVERTY_ERADICATION = 'PE'
+    NEW_SERVICE_CLUBS = 'NSC' 
+    SERVICE_PROJECTS = 'SP'
+
+    UMBRELLA_CHOICES = (
+        (EDUCATION_FOR_ALL, 'Education for All'),
+        (GLOBAL_ISSUES, 'Global Issues'),
+        (SAS_CENTRIC, 'SAS-Centric'),
+        (HELP_FOR_DISABLED_AND_ILL, 'Help for the Disabled and Ill'),
+        (POVERTY_ERADICATION, 'Poverty Eradication'),
+        (NEW_SERVICE_CLUBS, 'New Service Clubs'),
+        (SERVICE_PROJECTS, 'Service Projects')
+    )
+
+    name = models.CharField(max_length=500, unique=True)
+    mission = models.CharField(max_length=20000)
+    description = models.CharField(max_length=120000)
+    involvement = models.CharField(max_length=40000)
+    meeting = models.CharField(max_length=20000)
+    members = models.ManyToManyField(UserProfile, blank=True, related_name="memberClubs")
+    officers = models.ManyToManyField(UserProfile, blank=True, related_name="officerClubs")
+    umbrella = models.CharField(max_length=20000, choices=UMBRELLA_CHOICES)
+    color_primary = ColorField(default='#FFFFFF')
+    color_secondary = ColorField(default='#1A1A1A')
+    tags = models.ManyToManyField('Tag', related_name='clubs', blank=True)
+    logo = models.ImageField(null=True, blank=True, upload_to="logos/")
+    primary_contact = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name="primary_contact_club", null=True, blank=True)
+
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+class Event(models.Model):
+    startTime = models.DateTimeField(auto_now=False, auto_now_add=False)
+    endTime = models.DateTimeField(auto_now=False, auto_now_add=False)
+    club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name="events")
+    name = models.CharField(max_length=50)
+    series = models.UUIDField(blank=True, null=True)
+    location = models.CharField(max_length=50)
+    hours = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        ordering = ['startTime']
+
+
+    def __str__(self):
+        return self.name + " - " + self.club.name
+
+class Record(models.Model):
+    checkInDate = models.DateField(default=date.today)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name="records")
+    event = models.ForeignKey(Event, null=True, blank=True, on_delete=models.CASCADE, related_name="records")
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="records")
+    hours = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        ordering = ['-checkInDate']
+
+    def __str__(self):
+        return self.club.name + ": " + self.user.firstName + " " + self.user.lastName
