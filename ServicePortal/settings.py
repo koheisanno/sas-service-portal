@@ -186,7 +186,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-SITE_ID = 2
+SITE_ID = 3
 LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_REQUIRED = True
