@@ -1,2 +1,5 @@
 #env variables
 .env
+
+# Byte-compiled / optimized / DLL filesg
+__pycache__/
