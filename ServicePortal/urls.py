@@ -11,4 +11,4 @@ urlpatterns = [
     path('api/', include("portal.api.urls")),
     path('api-auth/', include("rest_framework.urls")),
     re_path(r"^(?!media).*$", IndexTemplateView.as_view(), name='entry-point')
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
