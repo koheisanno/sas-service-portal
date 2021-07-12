@@ -66,14 +66,12 @@ export default {
 
             errors: [],
 
-            // Private variables
             resolvePromise: undefined,
             rejectPromise: undefined,
         }
     },
     methods:{
         show(record) {
-            // Once we set our config, we tell the popup modal to open
             this.$refs.popup.open();
             this.record = record;
             this.name = record.name;
