@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SERVICE_PORTAL_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv("SERVICE_PORTAL_DEBUG_SETTING")
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com']
 
@@ -192,6 +192,11 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+
+ACCOUNT_ADAPTER = 'portal.adapter.MyAccountAdapter'
+SOCIALACCOUNT_ADAPTER="portal.adapter.MySocialAccountAdapter"
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
