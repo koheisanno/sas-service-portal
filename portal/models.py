@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     classOf = models.PositiveIntegerField(null=True, blank=True)
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=200)
     hours = HStoreField(blank=True, null=True)
 
     class Meta:
@@ -61,13 +61,14 @@ class Club(models.Model):
     )
 
     name = models.CharField(max_length=500, unique=True)
-    mission = models.CharField(max_length=20000)
-    description = models.CharField(max_length=120000)
-    involvement = models.CharField(max_length=40000)
-    meeting = models.CharField(max_length=20000)
+    mission = models.CharField(max_length=200)
+    description = models.CharField(max_length=1200)
+    involvement = models.CharField(max_length=400)
+    welcome = models.CharField(max_length=800)
+    meeting = models.CharField(max_length=200)
     members = models.ManyToManyField(UserProfile, blank=True, related_name="memberClubs")
     officers = models.ManyToManyField(UserProfile, blank=True, related_name="officerClubs")
-    umbrella = models.CharField(max_length=20000, choices=UMBRELLA_CHOICES)
+    umbrella = models.CharField(max_length=200, choices=UMBRELLA_CHOICES)
     color_primary = ColorField(default='#FFFFFF')
     color_secondary = ColorField(default='#1A1A1A')
     tags = models.ManyToManyField('Tag', related_name='clubs', blank=True)
@@ -110,3 +111,8 @@ class Record(models.Model):
 
     def __str__(self):
         return self.club.name + ": " + self.user.firstName + " " + self.user.lastName
+
+class GmailToken(models.Model):
+    refresh_token = models.CharField(max_length=130)
+    client_id = models.CharField(max_length=130)
+    client_secret = models.CharField(max_length=130)

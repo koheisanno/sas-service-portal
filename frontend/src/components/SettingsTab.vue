@@ -113,6 +113,20 @@
                 style="height: 80px"
               ></textarea>
             </div>
+            <div class="mb-4">
+              <label for="welcome">Welcome Message</label>
+              <div class="form-text">
+                This message will be sent to users via email upon joining. Max 800 characters.
+              </div>
+              <textarea
+                v-model="welcome"
+                class="form-control"
+                maxlength="800"
+                placeholder="Club Description"
+                id="welcome"
+                style="height: 120px"
+              ></textarea>
+            </div>
             <div class="d-grid gap-2 col-3 ms-auto">
               <button
                 type="button"
@@ -313,6 +327,7 @@ export default {
       mission: "",
       description: "",
       involvement: "",
+      welcome: "",
       meeting: "",
       imageError: null,
       logo:null,
@@ -326,6 +341,7 @@ export default {
         mission: this.mission,
         description: this.description,
         involvement: this.involvement,
+        welcome: this.welcome,
         meeting: this.meeting,
       };
       apiService(endpoint, "PATCH", body).then((data) => {
@@ -351,6 +367,7 @@ export default {
       this.description = this.currentClubData.description;
       this.meeting = this.currentClubData.meeting;
       this.involvement = this.currentClubData.involvement;
+      this.welcome = this.currentClubData.welcome;
 
       this.color_primary = this.currentClubData.color_primary;
       this.color_secondary = this.currentClubData.color_secondary;

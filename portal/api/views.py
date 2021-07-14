@@ -10,6 +10,8 @@ from rest_framework.parsers import MultiPartParser, FileUploadParser
 from django.db.models import Q, prefetch_related_objects
 from django.db import connection
 
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .mixins import CreateListMixin
 from .permissions import EventIsOfficer, checkIsOfficer, IsOfficer, IsOfficerOrReadOnly
@@ -137,9 +139,16 @@ class ClubJoinLeaveAPIView(APIView):
     def post(self, request, pk):
         club = get_object_or_404(Club, pk=pk)
         userProfile = request.user.userProfile
-        
-        club.members.add(userProfile)
-        club.save()
+
+        if userProfile not in club.members.all():     
+            club.members.add(userProfile)
+            club.save()
+
+        subject = "Welcome to " + club.name + "!"
+        message = "You joined " + club.name + " on the Service Portal.\n\n" + club.welcome
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [userProfile.email,]
+        send_mail( subject, message, email_from, recipient_list )
 
         serializer_context = {"request": request}
         serializer = self.serializer_class(club, context=serializer_context)

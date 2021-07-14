@@ -127,7 +127,7 @@ class ClubCurrentEventsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Club
-        fields = '__all__'
+        fields = ('id', 'events', 'name',)
 
 #OFFICER DATA SERIALIZERS
 
