@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SERVICE_PORTAL_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("SERVICE_PORTAL_DEBUG_SETTING")
+DEBUG = os.getenv("SERVICE_PORTAL_DEBUG_SETTING", False)
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com']
 
