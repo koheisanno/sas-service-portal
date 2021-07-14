@@ -5,6 +5,7 @@
         <h5 class="modal-title">{{ title }} Recurring Event</h5>
       </div>
       <div class="modal-body">
+        <p class="text-muted">This event is recurring. You may choose to apply these edits to previous and/or future occurrences.</p>
         <div class="form-check">
           <input
             class="form-check-input"
@@ -15,7 +16,7 @@
             v-model="option"
             checked
           />
-          <label class="form-check-label" for="this"> This event </label>
+          <label class="form-check-label" for="this"> This occurrence </label>
         </div>
         <div class="form-check">
           <input
@@ -27,7 +28,7 @@
             id="thisAndFollowing"
           />
           <label class="form-check-label" for="thisAndFollowing">
-            This and following events
+            This and following occurrences
           </label>
         </div>
         <div class="form-check">
@@ -39,7 +40,7 @@
             v-model="option"
             id="allEvents"
           />
-          <label class="form-check-label" for="allEvents"> All events </label>
+          <label class="form-check-label" for="allEvents"> All occurrences </label>
         </div>
       </div>
       <div class="modal-footer">
@@ -65,7 +66,7 @@ export default {
   data: () => ({
     title: "",
     option: "this",
-    // Private variables
+    
     resolvePromise: undefined,
     rejectPromise: undefined,
   }),

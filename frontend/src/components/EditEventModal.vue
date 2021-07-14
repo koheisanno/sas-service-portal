@@ -139,7 +139,10 @@ export default {
                 this.$refs.popup.close()
                 if(this.event.series!=null){
                     const option = await this.$refs.editConfirmDialogue.show("Edit")
-                    if(option=="allEvents"){
+                    if(option==false){
+                        this.resolvePromise(false);
+                    }
+                    else if(option=="allEvents"){
                         let endpoint=`/api/event/series/${this.event.id}/${this.event.series}/all/`;
                         let body = {
                                     "startTime": this.startTime,
