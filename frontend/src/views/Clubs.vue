@@ -167,7 +167,7 @@
                 <div class="mt-4" v-else>
                     <div v-if="clubs.length > 0">
                         <div
-                            v-for="club in clubs"
+                            v-for="club in shuffledClubList"
                             v-bind:key="club.id"
                             class="clubCard card"
                             :style="{ backgroundColor: club.color_primary }"
@@ -267,6 +267,20 @@ export default {
             this.getClubs();
             this.isFocused = false;
         },
+        shuffle(array) {
+            var currentIndex = array.length,  randomIndex;
+
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
+
     },
     computed: {
         filteredtags: function () {
@@ -292,6 +306,9 @@ export default {
                 return this.selectedTags.length + " tag(s) selected";
             }
         },
+        shuffledClubList: function() {
+            return this.shuffle(this.clubs)
+        }
     },
     watch: {
         selectedTags() {
