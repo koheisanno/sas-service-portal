@@ -111,8 +111,3 @@ class Record(models.Model):
 
     def __str__(self):
         return self.club.name + ": " + self.user.firstName + " " + self.user.lastName
-
-class GmailToken(models.Model):
-    refresh_token = models.CharField(max_length=130)
-    client_id = models.CharField(max_length=130)
-    client_secret = models.CharField(max_length=130)
