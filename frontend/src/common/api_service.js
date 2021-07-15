@@ -2,7 +2,9 @@ import { csrftoken } from "./csrf_token.js";
 
 async function getJSON(response) {
   console.log(response.status);
-  if (response.status === 404) {
+  if (response.status === 204) {
+    return "";
+  } else if (response.status === 404) {
     return null;
   } else if (!response.ok) {
     console.log(response.text())

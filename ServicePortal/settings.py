@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'colorfield',
     'django_rename_app',
     'webpack_loader',
+    'loaderio',
 ]
 
 MIDDLEWARE = [
