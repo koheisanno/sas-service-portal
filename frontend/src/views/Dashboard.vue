@@ -1,7 +1,10 @@
 <template>
   <div v-if="clubs == null">
-    <h5 class="text-secondary text-center my-5">
-      Officer dashboard unavailable.
+    <h3 class="text-secondary text-center mt-5 mb-2">
+      Oops...
+    </h3>
+    <h5 class="text-secondary text-center mb-5">
+      The officer dashboard is unavailable. Please make sure that you're registered as an officer for at least club!
     </h5>
   </div>
   <div v-else-if="loading" class="d-flex justify-content-center">
