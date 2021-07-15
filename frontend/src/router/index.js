@@ -4,7 +4,6 @@ import Clubs from "../views/Clubs.vue";
 import ClubPage from "../views/ClubPage.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Join from "../views/Join.vue";
-import Leave from "../views/Leave.vue";
 import Checkin from "../views/Check-in.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 
@@ -26,27 +25,21 @@ const routes = [
     props: true,
   },
   {
-    path: "/dashboard/",
+    path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
   },
   {
-    path: "/join/:id",
+    path: "/join",
     name: "Join",
     component: Join,
-    props: true,
+    props: route => ({ query: route.query.id })
   },
   {
-    path: "/leave/:id",
-    name: "Leave",
-    component: Leave,
-    props: true,
-  },
-  {
-    path: "/checkin/:id",
+    path: "/checkin",
     name: "Check-in",
     component: Checkin,
-    props: true,
+    props: route => ({ query: route.query.id })
   },
   {
     path: "/:catchAll(.*)",

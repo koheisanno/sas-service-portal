@@ -11,7 +11,7 @@ import { apiService } from "../common/api_service";
 export default {
   name: "Join",
   props: {
-    id: {
+    query: {
       type: String,
       required: true,
     },
@@ -24,13 +24,13 @@ export default {
   },
   methods: {
     getClubData() {
-      let endpoint = `/api/club/${this.id}/`;
+      let endpoint = `/api/club/${this.query}/`;
       apiService(endpoint).then((data) => {
         this.name = data.name;
       });
     },
     join() {
-      let endpoint = `/api/club/${this.id}/membership/`;
+      let endpoint = `/api/club/${this.query}/membership/`;
       apiService(endpoint, "POST");
       setTimeout(() => {
         this.$router.push({ name: "Home" });

@@ -46,7 +46,7 @@ import { apiService } from "../common/api_service";
 export default {
   name: "Checkin",
   props: {
-    id: {
+    query: {
       type: String,
       required: true,
     },
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     getClubData() {
-      let endpoint = `/api/club/${this.id}/current-events/`;
+      let endpoint = `/api/club/${this.query}/current-events/`;
       apiService(endpoint).then((data) => {
         this.name = data.name;
         this.events = data.events;
