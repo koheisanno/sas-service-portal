@@ -58,10 +58,12 @@ INSTALLED_APPS = [
     'colorfield',
     'django_rename_app',
     'webpack_loader',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -228,3 +230,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv("SERVICE_PORTAL_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("SERVICE_PORTAL_EMAIL_HOST_PASSWORD")
+
+CORS_ALLOWED_ORIGINS = [
+    "https://finch-lettuce-6bp5.squarespace.com"
+]

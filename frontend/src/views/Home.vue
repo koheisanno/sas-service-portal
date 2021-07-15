@@ -195,7 +195,6 @@ export default {
       apiService(endpoint).then((data) => {
         this.userData = data;
         this.populateUpcomingEvents();
-        console.log("DDDDDD");
         this.loading=false;
       });
     },
