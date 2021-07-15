@@ -54,14 +54,14 @@
                 v-for="club in clubs"
                 v-bind:key="club.id"
                 :class="'border border-3 border-primary img-fluid mx-auto'"
-                :src="base_url + '/checkin/' + club.id + '/'"
+                :src="base_url + '/checkin?id=' + club.id"
                 v-show="currentClub == club.id && qrCodeOption == 'check-in'"
             />
             <img
                 v-for="club in clubs"
                 v-bind:key="club.id"
                 :class="'border border-3 border-primary img-fluid mx-auto'"
-                :src="base_url + '/join/' + club.id + '/'"
+                :src="base_url + '/join?id=' + club.id"
                 v-show="currentClub == club.id && qrCodeOption == 'join'"
             />
         </div>
