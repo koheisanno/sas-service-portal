@@ -53,7 +53,7 @@ class ClubSerializer(serializers.ModelSerializer, EagerLoadingMixin):
     is_member = serializers.SerializerMethodField()
     umbrella = serializers.SerializerMethodField()
     officers = UserSerializer(many=True)
-    primary_contact = serializers.PrimaryKeyRelatedField(queryset = UserProfile.objects.all())
+    primary_contact = serializers.PrimaryKeyRelatedField(queryset = UserProfile.objects.all(), allow_null=True)
 
     def get_umbrella(self, obj):
         return obj.get_umbrella_display()

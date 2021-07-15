@@ -59,6 +59,20 @@
         >
           <div class="accordion-body">
               <div class='mb-4'>
+                  <label for="instagram">Instagram Handle</label>
+                  <div class="form-text">
+                      Optional. Please omit the @.
+                  </div>
+                  <input
+                      type="text"
+                      v-model="instagram"
+                      class="form-control"
+                      maxlength="150"
+                      id="instagram"
+                      placeholder="@"
+                  >
+              </div>
+              <div class='mb-4'>
                   <label for="mission">Mission Statement</label>
                   <div class="form-text">
                       Brief mission statement. Max 200 characters.
@@ -329,6 +343,7 @@ export default {
       involvement: "",
       welcome: "",
       meeting: "",
+      instagram: "",
       imageError: null,
       logo:null,
       primary_contact:null,
@@ -343,6 +358,7 @@ export default {
         involvement: this.involvement,
         welcome: this.welcome,
         meeting: this.meeting,
+        instagram: this.instagram,
       };
       apiService(endpoint, "PATCH", body).then((data) => {
         if (data != false) {
@@ -368,6 +384,7 @@ export default {
       this.meeting = this.currentClubData.meeting;
       this.involvement = this.currentClubData.involvement;
       this.welcome = this.currentClubData.welcome;
+      this.instagram = this.currentClubData.instagram;
 
       this.color_primary = this.currentClubData.color_primary;
       this.color_secondary = this.currentClubData.color_secondary;
@@ -410,9 +427,9 @@ export default {
     updatePrimaryContact(){
       let endpoint = `/api/club/${this.currentClubData.id}/`;
       let body = {
-        primary_contact: this.primary_contact
+        "primary_contact": this.primary_contact=="null" ? "" : this.primary_contact
       }
-
+      console.log(body)
       apiService(endpoint, "PATCH", body).then((data) => {
         if (data != false) {
             this.$emit("success-officer", "Club settings updated.");

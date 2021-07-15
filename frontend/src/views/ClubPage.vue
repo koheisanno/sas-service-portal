@@ -43,13 +43,13 @@
       </div>
       <div class="col-md-4">
         <div class="bg-white border py-3 px-4 mb-3 rounded">
-          <div class="d-grid text-secondary" v-if="is_member">
+          <div class="d-grid text-secondary mb-2" v-if="is_member">
             You are a member.
             <button @click="leaveClub" type="button" class="btn btn-danger">
               Leave
             </button>
           </div>
-          <div class="d-grid text-secondary" v-else>
+          <div class="d-grid text-secondary mb-2" v-else>
             You are not a member yet.
             <button @click="joinClub" type="button" class="btn btn-primary">
               Join
