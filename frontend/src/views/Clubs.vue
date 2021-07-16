@@ -178,7 +178,9 @@
                             :style="{ color: club.color_secondary }"
                         >
                             <div class="card-body">
+                                <!--
                                 <img class="float-end me-1" :src="club.logo">
+                                -->
                                 <h4 class="card-title">{{ club.name }}</h4>
                                 <div class="mb-2">
                                     <span

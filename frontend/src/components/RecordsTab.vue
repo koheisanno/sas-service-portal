@@ -233,7 +233,6 @@ export default {
             };
             for (var ref in this.$refs) {
                 if (ref.indexOf("tooltip") > -1) {
-                    console.log(ref)
                     return new Tooltip(this.$refs[ref], options);
                 }
             }

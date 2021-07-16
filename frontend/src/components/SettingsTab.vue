@@ -4,6 +4,7 @@
         Settings and Preferences
     </h4>
     <div class="accordion" id="accordionExample">
+      <!--
       <div class="accordion-item">
         <h2 class="accordion-header" id="clubLogo">
           <button
@@ -38,6 +39,7 @@
           </div>
         </div>
       </div>
+      -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="clubInformation">
           <button
@@ -313,7 +315,8 @@
 
 <script> 
 import Table from "../components/Table";
-import { apiService, apiImageService } from "../common/api_service";
+//import { apiService, apiImageService } from "../common/api_service";
+import { apiService } from "../common/api_service";
 
 export default {
   name: "SettingsTab",
@@ -405,6 +408,8 @@ export default {
     addOfficerSuccess(){
         this.$emit("success-officer", "Officer added successfully.");
     },
+
+    /*
     uploadLogo(event){
       if(event.target.files[0].size > 1048576){
         this.imageError = true;
@@ -424,6 +429,7 @@ export default {
         }
       });
     },
+    */
     updatePrimaryContact(){
       let endpoint = `/api/club/${this.currentClubData.id}/`;
       let body = {

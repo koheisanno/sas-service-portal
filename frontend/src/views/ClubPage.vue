@@ -15,7 +15,9 @@
     <div v-else class="row">
       <div class="col-md-8">
         <div class="bg-white border py-3 px-5 mb-3 rounded">
+          <!--
           <img class="me-4 float-start" height="80" :src="club.logo">
+          -->
           <div class="mb-3">
             <h1 class='mb-0'>
               {{ club.name }}

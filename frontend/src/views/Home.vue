@@ -17,12 +17,14 @@
           <h6 v-if="upcomingEvents.length==0" class='text-muted'>No upcoming events found.</h6>
           <ul v-else class="list-group list-container">
             <li v-for="event in upcomingEvents.slice(0,10)" :key="event.id" :set="club = findClubData(event.club)" class="d-flex list-group-item">
+              <!--
               <img v-if="club.logo!=null" class="thumbnail rounded float-start me-3 mt-1" :src="club.logo">
               <div v-else class="thumbnail-generic" :style="{ color: club.color_secondary, backgroundColor: club.color_primary }">
                 <p class="thumbnail-generic-text">
                   {{ club.name.substring(0,1) }}
                 </p> 
               </div>
+              -->
               <div>
                 <p class="mb-0 fw-bold text-dark">{{ event.name }}</p>
                 <p class='text-muted sub-text'>
@@ -54,13 +56,14 @@
           <h6 v-if="userRecords.length==0" class='text-muted'>No recent activities found.</h6>
           <ul v-else class="list-group list-container">
             <li v-for="record in userRecords" :key="record.id" :set="club = findClubData(record.club)" class="d-flex list-group-item">
-
+              <!--
               <img v-if="club.logo!=null" class="thumbnail rounded float-start me-3 mt-1" :src="club.logo">
               <div v-else class="thumbnail-generic" :style="{ color: club.color_secondary, backgroundColor: club.color_primary }">
                 <p class="thumbnail-generic-text">
                   {{ club.name.substring(0,1) }}
                 </p>
               </div>
+              -->
               <div>
                 <p class="mb-0 text-dark" v-if="record.event!=null">Checked into <span class="fw-bold">{{ record.event.name }}</span></p>
                 <p class="mb-0 fw-bold text-dark" v-else>Individual Task</p>
