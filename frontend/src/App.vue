@@ -25,4 +25,16 @@ export default {
 svg {
   cursor: pointer;
 }
+
+.text-prim{
+  color: #062046;
+}
+
+.bg-prim{
+  background-color: #faf3ea;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 </style>

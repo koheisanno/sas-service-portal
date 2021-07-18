@@ -1,11 +1,9 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light shadow">
     <div class="container-md">
       <router-link
         :to="{ name: 'Home' }"
-        class="navbar-brand"
-        style="color: #ff6e6e"
-        ><img src="../assets/img/logo.png" width="32" />AS Service Portal
+        ><img src="../assets/img/logo.png" width="160" />
       </router-link>
       <button
         class="navbar-toggler"
@@ -117,9 +115,8 @@ export default {
 </script>
 
 <style scoped>
-.navbar-brand {
-  font-family: "Pattaya", sans-serif;
-  font-size: 20px;
+.navbar{
+  background-color: #faf3ea;
 }
 
 .nav-icon-container{

@@ -87,16 +87,6 @@ class HomeEventSerializer(serializers.ModelSerializer):
         model = Event
         fields = '__all__'
 
-class HomeRecordSerializer(serializers.ModelSerializer): 
-    user = serializers.StringRelatedField(read_only = True)
-    club = serializers.PrimaryKeyRelatedField(read_only = True)
-    checkInDate = serializers.DateField(format="%d/%m/%Y")
-    event = HomeEventSerializer(read_only = True)
-
-    class Meta: 
-        model = Record
-        fields = '__all__'
-
 class HomeClubSerializer(serializers.ModelSerializer): 
     events = HomeEventSerializer(many=True, read_only=True)
 
@@ -105,7 +95,6 @@ class HomeClubSerializer(serializers.ModelSerializer):
         fields = ('id', 'events', 'name', 'logo', 'color_primary', 'color_secondary')
 
 class HomeUserProfileSerializer(serializers.ModelSerializer):
-    records = HomeRecordSerializer(many = True, read_only = True)
     memberClubs = HomeClubSerializer(many = True, read_only = True)
     officerClubs = serializers.StringRelatedField(many = True, read_only = True)
 

@@ -67,7 +67,7 @@ class CurrentUserProfileAPIView(APIView):
     @query_debugger
     def get(self, request):
         user = UserProfile.objects.prefetch_related(
-            'records', 'records__user', 'records__club', 'records__event', 'memberClubs__events', 'memberClubs__events__club',
+            'memberClubs__events', 'memberClubs__events__club',
         ).get(pk=request.user.userProfile.pk)
         serializer = HomeUserProfileSerializer(user)
         return Response(serializer.data)
