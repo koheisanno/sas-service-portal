@@ -157,7 +157,7 @@
                 </span>
                 <div class="d-flex justify-content-center" v-if="loading">
                     <div
-                        class="spinner-border mt-3"
+                        class="spinner-border text-secondary mt-3"
                         style="width: 5rem; height: 5rem"
                         role="status"
                     >

@@ -12,6 +12,8 @@ import "primeicons/primeicons.css"; //icons
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import "./assets/scss/custom.scss";
+
 let app = createApp(App);
 app.use(PrimeVue);
 app.use(router);

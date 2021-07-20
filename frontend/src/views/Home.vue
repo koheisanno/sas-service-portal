@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading" class="d-flex justify-content-center">
     <div
-      class="spinner-border mt-5 text-prim"
+      class="spinner-border mt-5 text-secondary"
       style="width: 5rem; height: 5rem"
       role="status"
     >
@@ -10,11 +10,11 @@
   </div>
   <div v-else class="bg-container">
     <div class="container-xl p-5">
-      <h1 class="text-prim mb-3">Welcome, {{ userData.firstName }}!</h1>
+      <h1 class="text-info mb-3">Welcome, {{ userData.firstName }}!</h1>
       <div class="row pt-2">
         <div class="col-sm-6 mb-3">
           <div class="border rounded bg-white p-4">
-            <h4 class="mb-3 text-prim">Upcoming Events</h4>
+            <h4 class="mb-3 text-info">Upcoming Events</h4>
             <h6 v-if="upcomingEvents.length==0" class='text-muted'>No upcoming events found.</h6>
             <ul v-else class="list-group list-container">
               <li v-for="event in upcomingEvents.slice(0,10)" :key="event.id" :set="club = findClubData(event.club)" class="d-flex list-group-item">
@@ -53,7 +53,7 @@
         </div>
         <div class="col-sm-6 mb-3">
           <div class="border rounded bg-white p-4">
-            <h4 class="mb-3 text-prim">Quick Links</h4>
+            <h4 class="mb-3 text-info">Quick Links</h4>
             <div class="list-group">
               <a href="https://www.sassvc.com" target="_blank" class="list-group-item list-group-item-action">
                 <p class="mb-0 text-dark fw-bold">Service Council Website</p>
@@ -119,7 +119,7 @@
             >
               <template #header>
                 <div class="d-flex align-items-center">
-                  <h4 class="m-0 text-prim">Your Hours</h4>
+                  <h4 class="m-0 text-info">Your Hours</h4>
                 </div>
               </template>
               <template #empty>No clubs found.</template>
@@ -127,7 +127,7 @@
               </Column>
               <Column header="Status">
                   <template #body="{ data }">
-                      <span v-if="data.isOfficer" :class="'badge bg-info'">
+                      <span v-if="data.isOfficer" :class="'badge bg-primary'">
                           Officer
                       </span>
                       <span v-else :class="'badge bg-secondary'">Member</span>
@@ -140,7 +140,7 @@
         </div>
         <div class="col-sm-4 d-none d-lg-block">
           <div class='border rounded bg-white p-3'>
-            <h4 class="py-2 text-prim">Stay Updated</h4>
+            <h4 class="py-2 text-info">Stay Updated</h4>
             <h5>
               <a href="https://www.instagram.com/sas.servicecouncil" class="link-dark" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -266,6 +266,8 @@ export default {
 <style scoped>
 .bg-container{
   background-image: url("../assets/img/background.png");
+  background-size: auto 100%;
+  background-position: center top;
 }
 
 h1, h4{

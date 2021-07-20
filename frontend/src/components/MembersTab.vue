@@ -61,7 +61,7 @@
             <Column field="fullName" header="Full Name" :sortable="true"></Column>
             <Column header="Status" :sortable="true">
                 <template #body="{ data }">
-                    <span v-if="checkIfOfficer(club.officers, data.id)" :class="'badge bg-info'">
+                    <span v-if="checkIfOfficer(club.officers, data.id)" :class="'badge bg-primary'">
                         Officer
                     </span>
                     <span v-else :class="'badge bg-secondary'"> Member </span>
