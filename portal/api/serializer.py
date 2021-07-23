@@ -5,12 +5,10 @@ from django.db.models import Q
 from portal.models import *
 from .mixins import EagerLoadingMixin
 
-class ClubImageSerializer(serializers.ModelSerializer):
-
+class LinkSerializer(serializers.ModelSerializer):
     class Meta: 
-        model = Club
-        fields = ('logo',)
-
+        model = Link 
+        fields =  '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
 

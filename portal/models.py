@@ -112,3 +112,14 @@ class Record(models.Model):
 
     def __str__(self):
         return self.club.name + ": " + self.user.firstName + " " + self.user.lastName
+
+
+class Link(models.Model):
+    CATEGORY_CHOICES = (
+        ('quick-links', 'Quick Links'),
+        ('officers-only', 'Officers Only'),
+    )
+
+    name = models.CharField(max_length=120)
+    url = models.CharField(max_length=120)
+    category = models.CharField(max_length=120, choices=CATEGORY_CHOICES)

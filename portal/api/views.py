@@ -47,6 +47,13 @@ def query_debugger(func):
 
     return inner_func
 
+class LinkAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = LinkSerializer(Link.objects.all(), many=True)
+        return Response(serializer.data)
+
 class CurrentUserProfileAPIView(APIView):
     permission_classes = [IsAuthenticated]
 

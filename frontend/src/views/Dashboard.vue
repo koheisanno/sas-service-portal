@@ -132,10 +132,14 @@
 						</svg>
             Settings
           </button>
-          <a
+          <button
             class="nav-link text-start"
+            id="v-pills-links-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-links"
             type="button"
             role="tab"
+            aria-controls="v-pills-links"
             aria-selected="false"
           >
             <svg
@@ -151,7 +155,7 @@
               />
             </svg>
             Advertising + Links
-          </a>
+          </button>
         </div>
       </div>
       <div class="col-10 tab-content px-4" id="v-pills-tabContent">
@@ -195,6 +199,14 @@
         >
           <SettingsTab :currentClubData="currentClubData" ref="settingsTab" @success-officer="success"/>
         </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-links"
+          role="tabpanel"
+          aria-labelledby="v-pills-links-tab"
+        >
+          <LinksTab />
+        </div>
       </div>
     </div>
   </div>
@@ -209,6 +221,7 @@ import SettingsTab from "../components/SettingsTab";
 import QRCodeTab from "../components/QRCodeTab"
 import EventsTab from "../components/EventsTab"
 import RecordsTab from "../components/RecordsTab"
+import LinksTab from "../components/LinksTab"
 
 export default {
   name: "Dashboard",
@@ -219,7 +232,8 @@ export default {
     SettingsTab,
     QRCodeTab,
     EventsTab,
-    RecordsTab
+    RecordsTab,
+    LinksTab
   },
   data() {
     return {

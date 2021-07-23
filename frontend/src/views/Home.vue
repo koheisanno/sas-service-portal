@@ -18,14 +18,6 @@
             <h6 v-if="upcomingEvents.length==0" class='text-muted'>No upcoming events found.</h6>
             <ul v-else class="list-group list-container">
               <li v-for="event in upcomingEvents.slice(0,10)" :key="event.id" :set="club = findClubData(event.club)" class="d-flex list-group-item">
-                <!--
-                <img v-if="club.logo!=null" class="thumbnail rounded float-start me-3 mt-1" :src="club.logo">
-                <div v-else class="thumbnail-generic" :style="{ color: club.color_secondary, backgroundColor: club.color_primary }">
-                  <p class="thumbnail-generic-text">
-                    {{ club.name.substring(0,1) }}
-                  </p> 
-                </div>
-                -->
                 <div>
                   <p class="mb-0 fw-bold text-dark">{{ event.name }}</p>
                   <p class='text-muted sub-text'>
@@ -266,8 +258,9 @@ export default {
 <style scoped>
 .bg-container{
   background-image: url("../assets/img/background.png");
-  background-size: auto 100%;
+  background-size: 100% auto;
   background-position: center top;
+  background-repeat: no-repeat;
 }
 
 h1, h4{
@@ -290,5 +283,11 @@ h1, h4{
 .list-container{
   max-height: 300px;
   overflow-y: auto;
+}
+
+@media only screen and (max-width: 1100px) {
+  .bg-container{
+    background-image: url("../assets/img/background-mobile.png");
+  }
 }
 </style>

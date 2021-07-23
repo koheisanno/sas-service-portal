@@ -21,6 +21,7 @@ urlpatterns = [
     path("record/<int:pk>/", RecordDetailAPIView.as_view(), name="record-detail"), #update single misc record using patch
     path("record/delete/", RecordBulkDeleteAPIView.as_view(), name="record-delete"), #delete records
     path("tag/", TagListAPIView.as_view(), name="tag-list"), #get tags
+    path("link/", LinkAPIView.as_view(), name="links-list"), #get links
 
 
     path("profile/", UserProfileListCreateAPIView.as_view(), name="profile-list"),
