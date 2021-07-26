@@ -81,7 +81,7 @@ class CurrentUserProfileAPIView(APIView):
 
 
 class UsersListAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request):
         queryset = UserProfile.objects.all()

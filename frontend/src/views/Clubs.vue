@@ -178,9 +178,6 @@
                             :style="{ color: club.color_secondary }"
                         >
                             <div class="card-body">
-                                <!--
-                                <img class="float-end me-1" :src="club.logo">
-                                -->
                                 <h4 class="card-title">{{ club.name }}</h4>
                                 <div class="mb-2">
                                     <span
@@ -197,7 +194,7 @@
                         </router-link>
                         </div>
                     </div>
-                    <div class='text-dark mt-4' v-else>
+                    <div class='text-dark mt-4 ms-3' v-else>
                         <h3 class="py-3">Oops...</h3>
                         <h6>No clubs matched your search query.</h6>
                     </div>

@@ -8,7 +8,7 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  <div v-else class="bg-container">
+  <div v-else>
     <div class="container-xl p-5">
       <h1 class="text-info mb-3">Welcome, {{ userData.firstName }}!</h1>
       <div class="row pt-2">
@@ -191,6 +191,13 @@ export default {
       },
       upcomingEvents: [],
       loading:false,
+      colors_choices: [
+        '#F8D5BE',
+        '#BEE048',
+        '#D6EDCC',
+        '#E9D9F8',
+        '#F6ECD0'
+      ]
     };
   },
   computed: {
@@ -204,6 +211,11 @@ export default {
         hours_array.push(hours_info);
       }
       return hours_array;
+    },
+    bgColor: function(){
+      return {
+        'background-color': this.colors_choices[Math.floor(Math.random() * 5)]
+      }
     }
   },
   methods: {
@@ -256,12 +268,6 @@ export default {
 </script>
 
 <style scoped>
-.bg-container{
-  background-image: url("../assets/img/background.png");
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
 
 h1, h4{
   font-family: 'Poppins', sans-serif;
@@ -283,11 +289,5 @@ h1, h4{
 .list-container{
   max-height: 300px;
   overflow-y: auto;
-}
-
-@media only screen and (max-width: 1100px) {
-  .bg-container{
-    background-image: url("../assets/img/background-mobile.png");
-  }
 }
 </style>
