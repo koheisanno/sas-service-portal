@@ -232,5 +232,6 @@ EMAIL_HOST_USER = os.getenv("SERVICE_PORTAL_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("SERVICE_PORTAL_EMAIL_HOST_PASSWORD")
 
 CORS_ALLOWED_ORIGINS = [
-    "https://finch-lettuce-6bp5.squarespace.com"
+    "https://finch-lettuce-6bp5.squarespace.com",
+    "https://sassvc.com"
 ]
