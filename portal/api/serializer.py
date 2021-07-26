@@ -146,6 +146,7 @@ class OfficershipUserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         exclude = ("user", "classOf",)
 
+
 #UsersListAPIView
 class OfficershipOfficersSerializer(serializers.ModelSerializer):
     status = serializers.SerializerMethodField()

@@ -4,6 +4,7 @@ from .views import *
 urlpatterns = [
     path("user/", CurrentUserProfileAPIView.as_view(), name="current-user"), #user
     path("user-list/", UsersListAPIView.as_view(), name="user-list"), #add officer
+    path("officer-list/", OfficersListAPIView.as_view(), name="officer-list"), #add officer
     path("officerships/", OfficershipAPIView.as_view(), name="current-user-officerships"), #officer dashboard
     path("club/", ClubListAPIView.as_view(), name="club-list"), #club search
     path("club/<int:pk>/", ClubDetailAPIView.as_view(), name="club-detail"), #get club data

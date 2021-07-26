@@ -24,24 +24,24 @@
                     @focus="focused"
                     v-model="taginput"
                 />
-                <div v-show="isFocused" class="list-group select-form" style="max-height: 200px; overflow:scroll">
-                <button
-                    type="button"
-                    class="list-group-item list-group-item-action select-form"
-                    v-for="tag in filteredtags"
-                    :value="tag.id"
-                    :key="tag.id"
-                    @click="toggleTag(tag.id)"
-                >
-                    <input
-                        class="form-check-input me-2 select-form"
-                        type="checkbox"
+                <div v-show="isFocused" class="list-group select-form" style="max-height: 185px; overflow:scroll">
+                    <button
+                        type="button"
+                        class="list-group-item list-group-item-action select-form"
+                        v-for="tag in filteredtags"
                         :value="tag.id"
-                        v-model="selectedTags"
-                        disabled
-                    />
-                    {{ tag.name }}
-                </button>
+                        :key="tag.id"
+                        @click="toggleTag(tag.id)"
+                    >
+                        <input
+                            class="form-check-input me-2 select-form"
+                            type="checkbox"
+                            :value="tag.id"
+                            v-model="selectedTags"
+                            disabled
+                        />
+                        {{ tag.name }}
+                    </button>
                 </div>
                 <hr />
                 <label class="form-label text-secondary">
@@ -178,7 +178,7 @@
                             :style="{ color: club.color_secondary }"
                         >
                             <div class="card-body">
-                                <h4 class="card-title">{{ club.name }}</h4>
+                                <h4 class="card-title"><strong>{{ club.name }}</strong></h4>
                                 <div class="mb-2">
                                     <span
                                         v-for="tag in club.tags"
@@ -190,7 +190,7 @@
                                 </div>
                                 <p class="card-text">{{ club.mission }}</p>
                             </div>
-                            <div class="card-footer">{{ club.umbrella }}</div>
+                            <div class="card-footer fst-italic">{{ club.umbrella }}</div>
                         </router-link>
                         </div>
                     </div>

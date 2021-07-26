@@ -79,9 +79,17 @@ class CurrentUserProfileAPIView(APIView):
         serializer = HomeUserProfileSerializer(user)
         return Response(serializer.data)
 
+class OfficersListAPIView(APIView):
+
+    def get(self, request):
+        queryset = UserProfile.objects.exclude(officerClubs=None)
+        serializer = OfficershipOfficersSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
 
 class UsersListAPIView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         queryset = UserProfile.objects.all()
