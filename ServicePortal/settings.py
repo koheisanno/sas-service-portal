@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("SERVICE_PORTAL_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("SERVICE_PORTAL_DEBUG_SETTING", False)
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com', 'www.sasserviceportal.com']
 
 
 # Application definition
@@ -188,7 +188,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-SITE_ID = 3
+SITE_ID = 4
 LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_REQUIRED = True
