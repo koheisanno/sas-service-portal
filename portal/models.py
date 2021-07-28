@@ -74,7 +74,7 @@ class Club(models.Model):
     tags = models.ManyToManyField('Tag', related_name='clubs', blank=True)
     logo = models.ImageField(null=True, blank=True, upload_to="logos/")
     primary_contact = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name="primary_contact_club", null=True, blank=True)
-    instagram = models.CharField(max_length=150)
+    instagram = models.CharField(max_length=150, null=True, blank=True)
 
 
     class Meta:
