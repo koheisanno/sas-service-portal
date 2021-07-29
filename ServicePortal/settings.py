@@ -235,3 +235,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://finch-lettuce-6bp5.squarespace.com",
     "https://www.sassvc.com"
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True

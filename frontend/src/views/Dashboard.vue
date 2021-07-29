@@ -4,7 +4,7 @@
       Oops...
     </h3>
     <h5 class="text-secondary text-center mb-5">
-      The officer dashboard is unavailable. Please make sure that you're registered as an officer for at least club!
+      The officer dashboard is unavailable. Please make sure that you're registered as an officer for at least one club!
     </h5>
   </div>
   <div v-else-if="loading" class="d-flex justify-content-center">
