@@ -378,20 +378,14 @@ export default {
 
         if (confirm) {
             let endpoint = "/api/event/delete/";
-            let success = true;
             let ids = [];
             for (let m = 0; m < this.selectedUpcomingEvents.length; m++) {
                 ids.push(this.selectedUpcomingEvents[m].id);
             }
-            await apiService(endpoint, "POST", ids).then((data) => {
-                if (data == false) {
-                    success = false;
-                }
-            });
-            this.selectedUpcomingEvents = [];
-            if (success) {
+            apiService(endpoint, "POST", ids).then(() => {
+                this.selectedUpcomingEvents = [];
                 this.$emit("success-events", "Event(s) deleted successfully.");
-            }
+            });
         }
     },
     async deletePastEvents() {
@@ -403,27 +397,20 @@ export default {
 
       if (confirm) {
         let endpoint = "/api/event/delete/";
-        let success = true;
         let ids = [];
         for (let m = 0; m < this.selectedPastEvents.length; m++) {
           ids.push(this.selectedPastEvents[m].id);
         }
-        await apiService(endpoint, "POST", ids).then((data) => {
-          if (data == false) {
-            success = false;
-          }
-        });
-        this.selectedPastEvents = [];
-        if (success) {
+        apiService(endpoint, "POST", ids).then(() => {
+            this.selectedPastEvents = [];
             this.$emit("success-events", "Event(s) deleted successfully.");
-        }
+        });
       }
     },
     async createEvent() {
         const response = await this.$refs.createEventModal.show(
             this.currentClubData
         );
-
         if (response) {
             this.$emit("success-events", "Event(s) created successfully.");
         }

@@ -15,9 +15,6 @@
     <div v-else class="row">
       <div class="col-md-8">
         <div class="bg-white border py-3 px-5 mb-3 rounded">
-          <!--
-          <img class="me-4 float-start" height="80" :src="club.logo">
-          -->
           <div class="mb-3">
             <h1 class='mb-0'>
               {{ club.name }}
@@ -125,8 +122,9 @@ export default {
     },
     joinClub() {
       let endpoint = `/api/club/${this.club.id}/membership/`;
-      apiService(endpoint, "POST");
-      this.is_member = true;
+      apiService(endpoint, "POST").then(()=>{
+          this.is_member = true;
+        });
     },
     async leaveClub() {
       const confirm = await this.$refs.confirmDialogue.show({
@@ -137,8 +135,9 @@ export default {
 
       if(confirm){
         let endpoint = `/api/club/${this.club.id}/membership/`;
-        apiService(endpoint, "DELETE");
-        this.is_member = false;
+        apiService(endpoint, "DELETE").then(()=>{
+          this.is_member = false;
+        });
       }
     },
   },

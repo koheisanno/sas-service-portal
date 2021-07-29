@@ -8,7 +8,6 @@ async function getJSON(response) {
     return null;
   } else if (!response.ok) {
     console.log(response.text())
-    return false;
   } else {
     return response.json();
   }

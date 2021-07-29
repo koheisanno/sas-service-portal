@@ -90,11 +90,9 @@ export default {
       });
       if (confirm) {
         let endpoint = "/api/club/" + this.club.id + "/remove-officer/";
-        apiService(endpoint, "POST", this.selected).then((data) => {
-          if (data != false) {
-            this.$emit("removeOfficerSuccess");
-            this.selected = [];
-          }
+        apiService(endpoint, "POST", this.selected).then(() => {
+          this.$emit("removeOfficerSuccess");
+          this.selected = [];
         });
       }
     },

@@ -8,6 +8,7 @@ urlpatterns = [
     path("officerships/", OfficershipAPIView.as_view(), name="current-user-officerships"), #officer dashboard
     path("club/", ClubListAPIView.as_view(), name="club-list"), #club search
     path("club/<int:pk>/", ClubDetailAPIView.as_view(), name="club-detail"), #get club data
+    path("club/<int:pk>/tag/", ClubTagAPIView.as_view(), name="club-tag"), #get club tags
     path("club/<int:pk>/logo/", ClubLogoAPIView.as_view(), name="club-logo"), #update club logo
     path("club/<int:pk>/current-events/", ClubCurrentEventsAPIView.as_view(), name="club-current-events"), #check-in page
     path("club/<int:pk>/remove-officer/", RemoveOfficerAPIView.as_view(), name="club-remove-officer"), #remove officer
@@ -23,9 +24,4 @@ urlpatterns = [
     path("record/delete/", RecordBulkDeleteAPIView.as_view(), name="record-delete"), #delete records
     path("tag/", TagListAPIView.as_view(), name="tag-list"), #get tags
     path("link/", LinkAPIView.as_view(), name="links-list"), #get links
-
-
-    path("profile/", UserProfileListCreateAPIView.as_view(), name="profile-list"),
-    path("clubs-hour/<int:pk>/", ClubHoursAPIView.as_view(), name="club-hours-detail"),
-    path("event/", EventListCreateAPIView.as_view(), name="event-list"),
 ]

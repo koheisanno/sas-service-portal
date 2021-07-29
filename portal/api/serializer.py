@@ -16,6 +16,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = UserProfile 
         fields =  '__all__'
 
+class ClubTagSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Club 
+        fields = ('tags',)
+
 #TagListAPIView
 class TagSerializer(serializers.ModelSerializer): 
 

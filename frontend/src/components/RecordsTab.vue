@@ -189,20 +189,14 @@ export default {
 
             if (confirm) {
                 let endpoint = "/api/record/delete/";
-                let success = true;
                 let ids = [];
                 for (let m = 0; m < this.selectedRecords.length; m++) {
                     ids.push(this.selectedRecords[m].id);
                 }
-                await apiService(endpoint, "POST", ids).then((data) => {
-                    if (data == false) {
-                        success = false;
-                    }
-                });
-                this.selectedRecords = [];
-                if (success) {
+                apiService(endpoint, "POST", ids).then(() => {
+                    this.selectedRecords = [];
                     this.$emit("success-records", "Record(s) deleted successfully.");
-                }
+                });
             }
         },
         async createRecord() {

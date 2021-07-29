@@ -47,54 +47,14 @@
           <div class="border rounded bg-white p-4">
             <h4 class="mb-3 text-info">Quick Links</h4>
             <div class="list-group">
-              <a href="https://www.sassvc.com" target="_blank" class="list-group-item list-group-item-action">
-                <p class="mb-0 text-dark fw-bold">Service Council Website</p>
+              <a v-for="link in filteredLinks" :key="link.id" :href="link.url" target="_blank" class="list-group-item list-group-item-action">
+                <p class="mb-0 text-dark fw-bold">{{ link.name }}</p>
                 <p class='text-muted sub-text'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
                     <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
                     <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
                   </svg>
-                  www.sassvc.com
-                </p>
-              </a>
-              <a href="https://www.sassvc.com/applications" target="_blank" class="list-group-item list-group-item-action">
-                <p class="mb-0 text-dark fw-bold">Apply to be a Service Project/Club</p>
-                <p class='text-muted sub-text'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                  </svg>
-                  www.sassvc.com/applications
-                </p>
-              </a>
-              <a href="https://www.sassvc.com/about" target="_blank" class="list-group-item list-group-item-action">
-                <p class="mb-0 text-dark fw-bold">About Our Service Community</p>
-                <p class='text-muted sub-text'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                  </svg>
-                  www.sassvc.com/about
-                </p>
-              </a>
-              <a href="https://sasserviceportal.com/email/" target="_blank" class="list-group-item list-group-item-action">
-                <p class="mb-0 text-dark fw-bold">Email Editor</p>
-                <p class='text-muted sub-text'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                  </svg>
-                  sasserviceportal.com/email/
-                </p>
-              </a>
-              <a href="https://bit.ly/saseaglespotlight" target="_blank" class="list-group-item list-group-item-action">
-                <p class="mb-0 text-dark fw-bold">Service Spotlight</p>
-                <p class='text-muted sub-text'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                  </svg>
-                  bit.ly/saseaglespotlight
+                  {{ link.url.substring(link.url.indexOf("https://")) }}
                 </p>
               </a>
             </div>
@@ -150,7 +110,7 @@
               </a>
             </h5>
             <h5>
-              <a href="https://www.sassvc.com/about" class="link-dark" target="_blank">
+              <a href="https://bit.ly/twisarchive" class="link-dark" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                 </svg>
@@ -191,13 +151,7 @@ export default {
       },
       upcomingEvents: [],
       loading:false,
-      colors_choices: [
-        '#F8D5BE',
-        '#BEE048',
-        '#D6EDCC',
-        '#E9D9F8',
-        '#F6ECD0'
-      ]
+      links: []
     };
   },
   computed: {
@@ -212,10 +166,10 @@ export default {
       }
       return hours_array;
     },
-    bgColor: function(){
-      return {
-        'background-color': this.colors_choices[Math.floor(Math.random() * 5)]
-      }
+    filteredLinks: function() {
+      return this.links.filter((item) => {
+          return item.category=="quick-links"
+      });
     }
   },
   methods: {
@@ -259,10 +213,18 @@ export default {
       return this.userData.memberClubs.find(obj => {
           return obj.id === id
         })
+    },
+    getLinks(){
+        let endpoint = "/api/link/";
+        apiService(endpoint).then((data) => {
+            this.links = [];
+            this.links.push(...data);
+        });
     }
   },
   mounted() {
     this.getUserData();
+    this.getLinks();
   },
 };
 </script>

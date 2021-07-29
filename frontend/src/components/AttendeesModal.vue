@@ -141,25 +141,20 @@ export default {
                     "checkInDate": `${today.getFullYear()}-${today.getMonth()+1}-${today.getDay()}`
                 }
                 apiService(endpoint, "POST", body)
-                    .then(data =>{
-                        if(data!=false){
-                            this.$refs[id+"_check"].value=data.id;
-                            this.$refs[id+"_input"].value=data.hours;
-                            this.$refs[id+"_input"].disabled=false;
-                            this.$emit("edited");
-                        }
+                    .then((data) =>{
+                        this.$refs[id+"_check"].value=data.id;
+                        this.$refs[id+"_input"].value=data.hours;
+                        this.$refs[id+"_input"].disabled=false;
+                        this.$emit("edited");
                     });
             }
             else{
                 let endpoint = `/api/record/${this.$refs[id+"_check"].value}/`;
                 apiService(endpoint, "DELETE")
-                    .then(data =>{
-                        console.log(data);
-                        if(data!=false){
-                            this.$refs[id+"_input"].value=0;
-                            this.$refs[id+"_input"].disabled=true;
-                            this.$emit("edited");
-                        }
+                    .then(() =>{
+                        this.$refs[id+"_input"].value=0;
+                        this.$refs[id+"_input"].disabled=true;
+                        this.$emit("edited");
                     });
             }
         },

@@ -309,6 +309,37 @@
           </div>
         </div>
       </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="clubTags">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Club Tags
+          </button>
+        </h2>
+        <div
+          id="collapseFour"
+          class="accordion-collapse collapse"
+          aria-labelledby="clubTags"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <h5>Select tags to help people find your club!</h5>
+            <div class="container-sm mb-3">
+              <div class="form-check" v-for="tag in allTags" :key="tag.id">
+                <input class="form-check-input" type="checkbox" :value="tag.id" :id="tag.id" v-model="tags">
+                <label class="form-check-label" :for="tag.id">{{ tag.name }}</label>
+              </div>
+            </div>
+            <button type="button" @click='saveSettingsTags' class="btn btn-secondary">Update</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -350,6 +381,8 @@ export default {
       imageError: null,
       logo:null,
       primary_contact:null,
+      tags: [],
+      allTags: []
     };
   },
   methods: {
@@ -375,10 +408,23 @@ export default {
         color_primary: this.color_primary,
         color_secondary: this.color_secondary,
       };
-      apiService(endpoint, "PATCH", body).then((data) => {
-        if (data != false) {
-            this.$emit("success-officer", "Club settings updated.");
-        }
+      apiService(endpoint, "PATCH", body).then(() => {
+        this.$emit("success-officer", "Club settings updated.");
+      });
+    },
+    saveSettingsTags(){
+      let endpoint = `/api/club/${this.currentClubData.id}/tag/`;
+      let body = {
+        tags: this.tags,
+      }
+      apiService(endpoint, "PATCH", body).then(() => {
+        this.$emit("success-officer", "Club settings updated.");
+      });
+    },
+    getTagOptions(){
+      let endpoint = '/api/tag/';
+      apiService(endpoint).then((data) => {
+        this.allTags = data;
       });
     },
     setSettingsFields() {
@@ -393,6 +439,8 @@ export default {
       this.color_secondary = this.currentClubData.color_secondary;
 
       this.primary_contact = this.currentClubData.primary_contact;
+      
+      this.tags.push(...this.currentClubData.tags);
 
       this.sponsors = this.currentClubData.officers.filter((obj) => {
         return obj.status === "faculty";
@@ -408,28 +456,6 @@ export default {
     addOfficerSuccess(){
         this.$emit("success-officer", "Officer added successfully.");
     },
-
-    /*
-    uploadLogo(event){
-      if(event.target.files[0].size > 1048576){
-        this.imageError = true;
-      } else{
-        this.logo = event.target.files[0];
-        this.imageError = false;
-      }
-    },
-    submitLogo(){
-      let endpoint = `/api/club/${this.currentClubData.id}/logo/`;
-      let formData = new FormData();
-      formData.append('file', this.logo);
-
-      apiImageService(endpoint, "PUT", formData).then((data) => {
-        if (data != false) {
-            this.$emit("success-officer", "Club logo updated.");
-        }
-      });
-    },
-    */
     updatePrimaryContact(){
       let endpoint = `/api/club/${this.currentClubData.id}/`;
       let body = {
@@ -448,5 +474,8 @@ export default {
       this.setSettingsFields();
     }
   },
+  mounted(){
+    this.getTagOptions();
+  }
 };
 </script>

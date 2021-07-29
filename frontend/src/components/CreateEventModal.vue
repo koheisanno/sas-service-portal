@@ -209,7 +209,6 @@ export default {
         },
         async submitCreationForm(){
             this.validateForm();
-            let success = true;
             if(this.errors.length==0){
                 this.$refs.popup.close()
                 let endpoint = `/api/club/${this.club.id}/event/`;
@@ -269,26 +268,16 @@ export default {
                         }
                     }
 
-                    await apiService(endpoint, "POST", arrayData)
-                        .then(data =>{
-                            if(!data){
-                                success = false
-                            }
+                    apiService(endpoint, "POST", arrayData)
+                        .then(() =>{
+                            this.resolvePromise(true);
                         });
                 }
                 else{
-                    await apiService(endpoint, "POST", data)
-                        .then(data =>{
-                            if(!data){
-                                success = false
-                            }
+                    apiService(endpoint, "POST", data)
+                        .then(() =>{
+                            this.resolvePromise(true);
                         });
-                }
-                if(success){
-                    this.resolvePromise(true)
-                }
-                else{
-                    this.resolvePromise(false)
                 }
                 this.resetForm();
             }

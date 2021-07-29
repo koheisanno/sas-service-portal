@@ -206,6 +206,11 @@ class ClubDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ClubSerializer
     permission_classes = [IsOfficerOrReadOnly]
 
+class ClubTagAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Club.objects.all()
+    serializer_class = ClubTagSerializer
+    permission_classes = [IsOfficerOrReadOnly]
+
 class ClubLogoAPIView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     parser_classes = [MultiPartParser]
@@ -433,7 +438,6 @@ class RecordDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, EventIsOfficer]
 
 
-
 class RecordBulkDeleteAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -453,39 +457,3 @@ class TagListAPIView(generics.ListAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
     permission_classes = [IsAuthenticated]
-
-
-
-
-
-
-
-
-
-
-
-#NOT USED
-
-class UserProfileListCreateAPIView(generics.ListCreateAPIView):
-    queryset = UserProfile.objects.all()
-    serializer_class = HomeUserProfileSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class ClubHoursAPIView(APIView):
-
-    def get_object(self, pk):
-        club = get_object_or_404(Club, pk=pk)
-        return club
-    
-    def get(self, request, pk):
-        club = self.get_object(pk)
-        serializer = ClubMemberHoursSerializer(club, context={'club_pk': club.id})
-        return Response(serializer.data)
-
-
-class EventListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-
-
