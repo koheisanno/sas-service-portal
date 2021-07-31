@@ -74,7 +74,7 @@ export default {
             var month = date.getMonth()
             var year = date.getFullYear();
 
-            if(month>=8){
+            if(month>=7){
                 for(var i=1; i<5; i++){
                     this.years.push(year+i);
                 }

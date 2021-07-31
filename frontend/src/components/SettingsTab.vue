@@ -63,7 +63,7 @@
               <div class='mb-4'>
                   <label for="instagram">Instagram Handle</label>
                   <div class="form-text">
-                      Optional. Please omit the @.
+                    Please omit the @.
                   </div>
                   <input
                       type="text"
@@ -89,7 +89,7 @@
                   ></textarea>
               </div>
             <div class="mb-4">
-              <label for="description">Club Description</label>
+              <label for="description">Club Description - Optional</label>
               <div class="form-text">
                 Description of your club's activities. Max 1200 characters.
               </div>
@@ -103,7 +103,7 @@
               ></textarea>
             </div>
             <div class="mb-4">
-              <label for="involvement">How to Get Involved</label>
+              <label for="involvement">How to Get Involved - Optional</label>
               <div class="form-text">
                 What should members expect once they join the club? Put any
                 sign-up or application forms here. Max 400 characters.

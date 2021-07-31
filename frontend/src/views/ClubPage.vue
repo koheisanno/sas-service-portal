@@ -34,10 +34,14 @@
         <div class="bg-white border py-3 px-4 rounded">
           <h4>Mission</h4>
           <p style="white-space: pre-line">{{ club.mission }}</p>
-          <h4>Description</h4>
-          <p style="white-space: pre-line">{{ club.description }}</p>
-          <h4>How to Get Involved</h4>
-          <p>{{ club.involvement }}</p>
+          <div v-if="club.description">
+            <h4>Description</h4>
+            <p style="white-space: pre-line">{{ club.description }}</p>
+          </div>
+          <div v-if="club.involvement">
+            <h4>How to Get Involved</h4>
+            <p>{{ club.involvement }}</p>
+          </div>
         </div>
       </div>
       <div class="col-md-4">

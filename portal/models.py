@@ -62,8 +62,8 @@ class Club(models.Model):
 
     name = models.CharField(max_length=500, unique=True)
     mission = models.CharField(max_length=200)
-    description = models.CharField(max_length=1200)
-    involvement = models.CharField(max_length=400)
+    description = models.CharField(max_length=1200, null=True, blank=True)
+    involvement = models.CharField(max_length=400, null=True, blank=True)
     welcome = models.CharField(max_length=800)
     meeting = models.CharField(max_length=200)
     members = models.ManyToManyField(UserProfile, blank=True, related_name="memberClubs")
@@ -123,3 +123,6 @@ class Link(models.Model):
     name = models.CharField(max_length=120)
     url = models.CharField(max_length=120)
     category = models.CharField(max_length=120, choices=CATEGORY_CHOICES)
+    
+    def __str__(self):
+        return self.name

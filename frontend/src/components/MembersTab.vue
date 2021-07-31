@@ -59,7 +59,7 @@
             <template #empty> No members found. </template>
             <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
             <Column field="fullName" header="Full Name" :sortable="true"></Column>
-            <Column header="Status" :sortable="true">
+            <Column header="Status">
                 <template #body="{ data }">
                     <span v-if="checkIfOfficer(club.officers, data.id)" :class="'badge bg-primary'">
                         Officer
@@ -67,7 +67,7 @@
                     <span v-else :class="'badge bg-secondary'"> Member </span>
                 </template>
             </Column>
-            <Column header="Hours" :sortable="true">
+            <Column header="Hours">
                 <template #body="{ data }">
                     <span v-if="club.name in data.hours">
                         {{ data.hours[club.name] }}
