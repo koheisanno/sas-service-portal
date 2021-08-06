@@ -24,7 +24,7 @@
                     @focus="focused"
                     v-model="taginput"
                 />
-                <div v-show="isFocused" class="list-group select-form" style="position: absolute; z-index: 1; max-height: 300px; overflow:scroll">
+                <div v-show="isFocused" class="border-bottom list-group select-form" style="position: absolute; z-index: 1; max-height: 300px; overflow:scroll">
                     <button
                         type="button"
                         class="list-group-item list-group-item-action select-form"
