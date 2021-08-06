@@ -9,7 +9,6 @@ urlpatterns = [
     path("club/", ClubListAPIView.as_view(), name="club-list"), #club search
     path("club/<int:pk>/", ClubDetailAPIView.as_view(), name="club-detail"), #get club data
     path("club/<int:pk>/tag/", ClubTagAPIView.as_view(), name="club-tag"), #get club tags
-    path("club/<int:pk>/logo/", ClubLogoAPIView.as_view(), name="club-logo"), #update club logo
     path("club/<int:pk>/current-events/", ClubCurrentEventsAPIView.as_view(), name="club-current-events"), #check-in page
     path("club/<int:pk>/remove-officer/", RemoveOfficerAPIView.as_view(), name="club-remove-officer"), #remove officer
     path("club/<int:pk>/add-officer/", AddOfficerAPIView.as_view(), name="club-add-officer"), #add officer

@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets, status
+from rest_framework import generics, status
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.exceptions import ValidationError, PermissionDenied
@@ -25,6 +25,7 @@ from django.db import connection, reset_queries
 import time
 import functools
 
+#debug helper
 def query_debugger(func):
 
     @functools.wraps(func)
@@ -47,6 +48,7 @@ def query_debugger(func):
 
     return inner_func
 
+#get links
 class LinkAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -54,6 +56,7 @@ class LinkAPIView(APIView):
         serializer = LinkSerializer(Link.objects.all(), many=True)
         return Response(serializer.data)
 
+#get/update user profile
 class CurrentUserProfileAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -71,7 +74,6 @@ class CurrentUserProfileAPIView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @query_debugger
     def get(self, request):
         user = UserProfile.objects.prefetch_related(
             'memberClubs__events', 'memberClubs__events__club',
@@ -79,6 +81,7 @@ class CurrentUserProfileAPIView(APIView):
         serializer = HomeUserProfileSerializer(user)
         return Response(serializer.data)
 
+#get officers only
 class OfficersListAPIView(APIView):
 
     def get(self, request):
@@ -86,8 +89,7 @@ class OfficersListAPIView(APIView):
         serializer = OfficershipOfficersSerializer(queryset, many=True)
         return Response(serializer.data)
 
-
-
+#get all users
 class UsersListAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -96,13 +98,12 @@ class UsersListAPIView(APIView):
         serializer = OfficershipOfficersSerializer(queryset, many=True)
         return Response(serializer.data)
 
-
+#get clubs
 class ClubListAPIView(APIView):
     filter_backends = [SearchFilter,]
     search_fields = ["name"]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    @query_debugger
     def get(self, request):
         queryset = ClubSerializer.setup_eager_loading(Club.objects.all())
         umbrellas = self.request.query_params.get("umbrella", None)
@@ -115,10 +116,12 @@ class ClubListAPIView(APIView):
         tags = self.request.query_params.get("tag", None)
         if tags is not None:
             tags = tags.split(",")
-            queryset = queryset.filter(tags__in=tags).distinct()
+            for tag in tags:
+                queryset = queryset.filter(tags__id=tag)
         serializer = ClubSerializer(queryset, many=True)
         return Response(serializer.data)
 
+#post new events
 class EventBulkCreateAPIView(CreateListMixin, generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -131,8 +134,8 @@ class EventBulkCreateAPIView(CreateListMixin, generics.ListCreateAPIView):
 
         serializer.save(club=club)
 
+#delete/post club membership
 class ClubJoinLeaveAPIView(APIView):
-    serializer_class = ClubSerializer
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk):
@@ -144,12 +147,7 @@ class ClubJoinLeaveAPIView(APIView):
         if userProfile in club.officers.all():
             club.officers.remove(userProfile)
 
-        club.save()
-
-        serializer_context = {"request": request}
-        serializer = self.serializer_class(club, context=serializer_context)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
 
     def post(self, request, pk):
         club = get_object_or_404(Club, pk=pk)
@@ -157,7 +155,6 @@ class ClubJoinLeaveAPIView(APIView):
 
         if userProfile not in club.members.all():     
             club.members.add(userProfile)
-            club.save()
 
         subject = "Welcome to " + club.name + "!"
         message = "You joined " + club.name + " on the Service Portal.\n\n" + club.welcome
@@ -165,12 +162,9 @@ class ClubJoinLeaveAPIView(APIView):
         recipient_list = [userProfile.email,]
         send_mail( subject, message, email_from, recipient_list )
 
-        serializer_context = {"request": request}
-        serializer = self.serializer_class(club, context=serializer_context)
+        return Response(status=status.HTTP_200_OK)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
+#post remove officer
 class RemoveOfficerAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -183,7 +177,6 @@ class RemoveOfficerAPIView(APIView):
         club.officers.remove(*officers_to_delete)
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class AddOfficerAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -210,29 +203,7 @@ class ClubTagAPIView(generics.RetrieveUpdateAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubTagSerializer
     permission_classes = [IsOfficerOrReadOnly]
-
-class ClubLogoAPIView(APIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    parser_classes = [MultiPartParser]
-
-    def get_object(self):
-        club_pk=self.kwargs.get("pk")
-        club=get_object_or_404(Club, pk=club_pk)
-        
-        return club
-
-    def put(self, request, format=None, *args, **kwargs):
-        file_obj = request.data['file']
-
-        club = self.get_object()
-        checkIsOfficer(self.request, club)
-
-        serializer = ClubImageSerializer(club, data={'logo':file_obj})
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-        
+    
 
 class ClubCurrentEventsAPIView(generics.RetrieveAPIView):
     queryset = Club.objects.all()
@@ -249,6 +220,19 @@ class EventSeriesAPIView(APIView):
         checkIsOfficer(self.request, event.club)
         
         return event
+
+    def formatDate(self, date):
+        m = date.month
+        d = date.day
+        if m<10:
+            m="0"+str(m)
+        else:
+            m=str(m)
+        if d<10:
+            d="0"+str(d)
+        else:
+            d=str(d)
+        return str(date.year)+"-"+m+"-"+d
 
 
     def get(self, request, *args, **kwargs):
@@ -280,18 +264,6 @@ class EventSeriesAPIView(APIView):
            return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    def formatDate(self, date):
-        m = date.month
-        d = date.day
-        if m<10:
-            m="0"+str(m)
-        else:
-            m=str(m)
-        if d<10:
-            d="0"+str(d)
-        else:
-            d=str(d)
-        return str(date.year)+"-"+m+"-"+d
 
     def put(self, request, *args, **kwargs):
         edited_events = []
@@ -393,7 +365,6 @@ class RecordUserCreateAPIView(APIView):
 class OfficershipAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    @query_debugger
     def get(self, request):
         user = UserProfile.objects.prefetch_related(
             'officerClubs__tags', 'officerClubs__events__records', 'officerClubs__events__records__user', 'officerClubs__members__records', 'officerClubs__officers', 'officerClubs__records', 'officerClubs__records__user', 'officerClubs__records__club',
@@ -402,7 +373,6 @@ class OfficershipAPIView(APIView):
         return Response(serializer.data)
 
 
-#must be an officer to edit
 class RecordCreateAPIView(generics.CreateAPIView):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
@@ -430,8 +400,6 @@ class RecordCreateAPIView(generics.CreateAPIView):
         serializer.save(club=club, user=userprofile, event=event)
 
 
-
-#must be an officer to edit
 class RecordDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
@@ -450,7 +418,6 @@ class RecordBulkDeleteAPIView(APIView):
         Record.objects.filter(id__in=ids).delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 
 class TagListAPIView(generics.ListAPIView):

@@ -83,10 +83,10 @@ export default {
     },
     async remove() {
       const confirm = await this.$refs.confirmDialogue.show({
-        title: "Delete",
+        title: "Remove Officers",
         message:
-          "Are you sure you want to delete the selected officers?",
-        okButton: "Delete Forever",
+          "Are you sure you want to remove the selected officers?",
+        okButton: "Remove",
       });
       if (confirm) {
         let endpoint = "/api/club/" + this.club.id + "/remove-officer/";

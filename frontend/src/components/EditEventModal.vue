@@ -175,8 +175,6 @@ export default {
                                     "location": this.location,
                                     "hours": this.hours
                                 }
-
-                        console.log(body)
                         await apiService(endpoint, "PUT", body)
                     }
                 }

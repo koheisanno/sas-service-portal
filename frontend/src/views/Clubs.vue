@@ -265,6 +265,7 @@ export default {
             }
             this.getClubs();
             this.isFocused = false;
+            this.taginput = "";
         },
         shuffle(array) {
             var currentIndex = array.length,  randomIndex;

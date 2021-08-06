@@ -14,12 +14,12 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-
-load_dotenv()
+from distutils.util import strtobool
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SERVICE_PORTAL_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("SERVICE_PORTAL_DEBUG_SETTING", False)
+DEBUG = bool(strtobool(os.getenv('SERVICE_PORTAL_DEBUG_SETTING', 'False')))
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com', 'www.sasserviceportal.com']
 
@@ -237,4 +237,4 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = os.getenv("SERVICE_PORTAL_SSL_REDIRECT", True)
+SECURE_SSL_REDIRECT = bool(strtobool(os.getenv('SERVICE_PORTAL_SSL_REDIRECT', 'True')))

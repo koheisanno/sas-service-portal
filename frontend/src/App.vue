@@ -26,10 +26,6 @@ svg {
   cursor: pointer;
 }
 
-.bg-prim{
-  background-color: #faf3ea;
-}
-
 * {
   font-family: 'Open Sans', sans-serif;
 }
