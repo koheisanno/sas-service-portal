@@ -40,7 +40,7 @@
           </div>
           <div v-if="club.involvement">
             <h4>How to Get Involved</h4>
-            <p>{{ club.involvement }}</p>
+            <p style="white-space: pre-line">{{ club.involvement }}</p>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="bg-white border py-3 px-4 mb-3 rounded">
           <h4>Meetings</h4>
-          <p>{{ club.meeting }}</p>
+          <p style="white-space: pre-line">{{ club.meeting }}</p>
         </div>
         <div v-if="primary_contact!=null" class="d-grid mb-3">
           <a :href="'mailto:' + primary_contact.email" class="btn btn-secondary" type="button">
