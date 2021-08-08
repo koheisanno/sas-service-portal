@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="bg-white border py-3 px-4 mb-3 rounded">
+        <div class="mt-md-0 mt-3 bg-white border py-3 px-4 mb-3 rounded">
           <div class="d-grid text-secondary mb-2" v-if="is_member">
             You are a member.
             <button @click="leaveClub" type="button" class="btn btn-danger">
