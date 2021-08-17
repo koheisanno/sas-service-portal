@@ -47,8 +47,7 @@ class Club(models.Model):
     SAS_CENTRIC = 'SASCENTRIC'
     HELP_FOR_DISABLED_AND_ILL = 'H4DI'
     POVERTY_ERADICATION = 'PE'
-    NEW_SERVICE_CLUBS = 'NSC' 
-    SERVICE_PROJECTS = 'SP'
+    NEW_SERVICE_CLUBS = 'NSC'
 
     UMBRELLA_CHOICES = (
         (EDUCATION_FOR_ALL, 'Education for All'),
@@ -56,8 +55,7 @@ class Club(models.Model):
         (SAS_CENTRIC, 'SAS-Centric'),
         (HELP_FOR_DISABLED_AND_ILL, 'Help for the Disabled and Ill'),
         (POVERTY_ERADICATION, 'Poverty Eradication'),
-        (NEW_SERVICE_CLUBS, 'New Service Clubs'),
-        (SERVICE_PROJECTS, 'Service Projects')
+        (NEW_SERVICE_CLUBS, 'New Service Clubs')
     )
 
     name = models.CharField(max_length=500, unique=True)
