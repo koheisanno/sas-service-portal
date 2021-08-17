@@ -128,19 +128,6 @@
                         New Service Clubs
                     </label>
                 </div>
-                <div class="form-check">
-                    <input
-                        @change="getClubs"
-                        v-model="umbrellas"
-                        class="form-check-input"
-                        type="checkbox"
-                        value="SP"
-                        id="SP"
-                    />
-                    <label class="form-check-label text-secondary" for="SP">
-                        Service Projects
-                    </label>
-                </div>
             </div>
         </div>
         <div class="col-md-10 col-12 px-md-5 p-4">
