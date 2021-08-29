@@ -69,7 +69,10 @@
             </Column>
             <Column header="Hours">
                 <template #body="{ data }">
-                    <span v-if="club.name in data.hours">
+                    <span v-if="data.hours==null">
+                        0
+                    </span>
+                    <span v-else-if="club.name in data.hours">
                         {{ data.hours[club.name] }}
                     </span>
                     <span v-else>0</span>
@@ -116,14 +119,36 @@ export default {
     },
     methods: {
         copyMembers() {
+            var text =this.selectedMembers.map((a) => a.email);
+            var context = this;
+            if (!navigator.clipboard) {
+                this.fallbackCopyMembers();
+                return;
+            }
+            navigator.clipboard.writeText(text).then(function() {
+                console.log("Async: copy successful.");
+                context.copied=true;
+                setTimeout(() => { context.copied=false; }, 2000);
+            }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+        },
+        fallbackCopyMembers() {
             var text = this.$refs.memberEmails;
             text.value = this.selectedMembers.map((a) => a.email);
             text.removeAttribute("hidden");
             text.select();
-            document.execCommand("copy");
-            text.setAttribute("hidden", "true");
-            this.copied=true;
-            setTimeout(() => { this.copied=false; }, 2000);
+            try{
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Fallback: Copying text command was ' + msg);
+                text.setAttribute("hidden", "true");
+                this.copied=true;
+                setTimeout(() => { this.copied=false; }, 2000);
+            }
+            catch(e){
+                console.error('Fallback: Oops, unable to copy', e);
+            }
         },
         checkIfOfficer(officers, id){
             return officers.some(e => e.id === id);
