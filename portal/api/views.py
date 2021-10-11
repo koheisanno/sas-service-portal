@@ -342,8 +342,6 @@ class RecordUserCreateAPIView(APIView):
         event_pk = self.kwargs.get("event_pk")
         event = get_object_or_404(Event, pk=event_pk)
         
-        checkIsOfficer(self.request, event.club)
-
         club = event.club
         user = self.request.user.userProfile
         hours = event.hours
