@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-5">
+  <div class="container p-md-5 p-4">
     <ConfirmDialogue ref="confirmDialogue"/>
     <div v-if="loading">
       <div class="d-flex justify-content-center" v-if="loading">
