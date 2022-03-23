@@ -1,13 +1,10 @@
 from rest_framework import generics, status
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework.exceptions import ValidationError, PermissionDenied
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
-from rest_framework.parsers import MultiPartParser, FileUploadParser
-from django.db.models import Q, prefetch_related_objects
 from django.db import connection
 
 from django.core.mail import send_mail
@@ -17,9 +14,6 @@ from .mixins import CreateListMixin
 from .permissions import EventIsOfficer, checkIsOfficer, IsOfficer, IsOfficerOrReadOnly
 from portal.models import *
 from .serializer import *
-
-import requests
-import urllib.parse
 
 from django.db import connection, reset_queries
 import time
@@ -50,15 +44,18 @@ def query_debugger(func):
 
 #get links
 class LinkAPIView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         serializer = LinkSerializer(Link.objects.all(), many=True)
         return Response(serializer.data)
 
+#get is authenticated
+class CurrentUserAuthAPIView(APIView):
+    def get(self, request):
+        return Response(request.user.is_authenticated)
+
 #get/update user profile
 class CurrentUserProfileAPIView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def patch(self, request):
         serializer = HomeUserProfileSerializer(request.user.userProfile, data=request.data, partial=True)
@@ -75,11 +72,14 @@ class CurrentUserProfileAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request):
-        user = UserProfile.objects.prefetch_related(
-            'memberClubs__events', 'memberClubs__events__club',
-        ).get(pk=request.user.userProfile.pk)
-        serializer = HomeUserProfileSerializer(user)
-        return Response(serializer.data)
+        if request.user.is_authenticated:
+            user = UserProfile.objects.prefetch_related(
+                'memberClubs__events', 'memberClubs__events__club',
+            ).get(pk=request.user.userProfile.pk)
+            serializer = HomeUserProfileSerializer(user)
+            return Response(serializer.data)
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 #get officers only
 class OfficersListAPIView(APIView):
@@ -421,4 +421,3 @@ class RecordBulkDeleteAPIView(APIView):
 class TagListAPIView(generics.ListAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
-    permission_classes = [IsAuthenticated]

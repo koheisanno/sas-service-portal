@@ -54,9 +54,12 @@
           </div>
           <div class="d-grid text-secondary mb-2" v-else>
             You are not a member yet.
-            <button @click="joinClub" type="button" class="btn btn-primary">
+            <button v-if="is_auth" @click="joinClub" type="button" class="btn btn-primary">
               Join
             </button>
+            <a v-else href="/accounts/login/" type="button" class="btn btn-primary">
+              Join
+            </a>
           </div>
         </div>
         <div class="bg-white border py-3 px-4 mb-3 rounded">
@@ -96,6 +99,10 @@ export default {
       type: String,
       required: true,
     },
+    is_auth: {
+      type: Boolean,
+      default: false,
+    }
   },
   components: {
     ConfirmDialogue,

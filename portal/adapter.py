@@ -5,6 +5,9 @@ from django.core.exceptions import ValidationError
 from .models import UserProfile
 from django.contrib.auth.models import User
 from allauth.account.utils import perform_login
+from allauth.exceptions import ImmediateHttpResponse
+from django.shortcuts import render
+
 
 class MyAccountAdapter(DefaultAccountAdapter):
     def is_open_for_signup(self, request):
@@ -12,21 +15,14 @@ class MyAccountAdapter(DefaultAccountAdapter):
             return False
         return True
 
-    def get_login_redirect_url(self, request):
-        if UserProfile.objects.get(user=request.user).classOf==None:
-            print(UserProfile.objects.get(user=request.user).classOf==None)
-            return "/users/info/"
-
 class MySocialAccountAdapter(DefaultSocialAccountAdapter):
     def validate_disconnect(self, account, accounts):
         raise ValidationError("Can't disconnect.")
 
-    def is_open_for_signup(self, request, sociallogin):
-        u = sociallogin.user
-        return u.email.split('@')[1] == "sas.edu.sg"
-
     def pre_social_login(self, request, sociallogin): 
         user = sociallogin.user
+        if user.email.split('@')[1] != "sas.edu.sg":
+            raise ImmediateHttpResponse(render(request, "account/signup_closed.html"))
         if user.id:  
             return          
         try:

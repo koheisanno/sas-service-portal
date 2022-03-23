@@ -1,8 +1,6 @@
 from allauth.account.signals import user_signed_up
-from django.shortcuts import render, redirect
 from .models import UserProfile, Record
 from django.db.models.signals import post_delete, post_save
-from django.dispatch import receiver
 
 def user_signed_up_receiver(request, user, **kwargs):
     user.username = user.email[0:user.email.index('@')]

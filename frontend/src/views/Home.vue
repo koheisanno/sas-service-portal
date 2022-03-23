@@ -10,7 +10,7 @@
   </div>
   <div v-else>
     <div class="container-xl p-md-5 p-4">
-      <h1 class="text-info mb-3">Welcome, {{ userData.firstName }}!</h1>
+      <h1 class="text-info mb-3">Welcome{{ userData.firstName ? ", " + userData.firstName : " to the SAS Service Portal" }}!</h1>
       <div class="row pt-2">
         <div class="col-sm-6 mb-3">
           <div class="border rounded bg-white p-4">
@@ -180,7 +180,7 @@ export default {
       let endpoint = "/api/user/";
       apiService(endpoint).then((data) => {
         this.userData = data;
-        this.populateUpcomingEvents();
+        if(data != "") this.populateUpcomingEvents();
         this.loading=false;
       });
     },

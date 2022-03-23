@@ -1,5 +1,13 @@
 <template>
-  <div v-if="clubs == null">
+  <div v-if="is_auth == false">
+    <h3 class="text-secondary text-center mt-5 mb-2">
+      Oops...
+    </h3>
+    <h5 class="text-secondary text-center mb-5">
+      Please login to access the officer dashboard.
+    </h5>
+  </div>
+  <div v-else-if="clubs == null">
     <h3 class="text-secondary text-center mt-5 mb-2">
       Oops...
     </h3>
@@ -235,6 +243,12 @@ export default {
     RecordsTab,
     LinksTab
   },
+  props: {
+    is_auth: {
+        type: Boolean,
+        default: false,
+    },
+  },
   data() {
     return {
       modal: null,
@@ -325,7 +339,7 @@ export default {
     }
   },
   created() {
-    this.getClubsData(true, true);
+    if(this.is_auth) this.getClubsData(true, true);
   }
 };
 </script>

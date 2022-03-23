@@ -1,8 +1,8 @@
 <template>
   <div class="bg-light">
-    <NavBarComponent />
+    <NavBarComponent :is_auth="is_auth"/>
     <ProfileModal />
-    <router-view />
+    <router-view :is_auth="is_auth"/>
     <Footer />
   </div>
 </template>
@@ -11,6 +11,7 @@
 import NavBarComponent from "./components/Navbar.vue";
 import ProfileModal from "./components/ProfileModal.vue";
 import Footer from "./components/Footer.vue";
+import { apiService } from "./common/api_service";
 
 export default {
   name: "Home",
@@ -18,6 +19,22 @@ export default {
     NavBarComponent,
     ProfileModal,
     Footer
+  },
+  data() {
+    return {
+        is_auth: false,
+    };
+  },
+  methods: {
+    getIsAuthenticated(){
+      let endpoint = "/api/user-isauth/";
+        apiService(endpoint).then((data) => {
+          this.is_auth = data;
+        });
+    }
+  },
+  mounted(){
+    this.getIsAuthenticated();
   },
 };
 </script>

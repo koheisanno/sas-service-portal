@@ -27,18 +27,4 @@ function apiService(endpoint, method, data) {
     .catch((error) => console.log(error));
 }
 
-function apiImageService(endpoint, method, data) {
-  const config = {
-    method: method || "GET",
-    body: data !== undefined ? data : null,
-    headers: {
-      "X-CSRFToken": csrftoken,
-    },
-  };
-
-  return fetch(endpoint, config)
-    .then(getJSON)
-    .catch((error) => console.log(error));
-}
-
-export { apiService,  apiImageService};
+export { apiService };

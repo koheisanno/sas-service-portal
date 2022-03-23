@@ -1,11 +1,6 @@
 {
   "status": "done",
   "assets": {
-    "fonts/primeicons.3b6e3706.woff": {
-      "name": "fonts/primeicons.3b6e3706.woff",
-      "path": "/Users/koheisanno/Documents/SASServicePortal/ServicePortal/frontend/dist/fonts/primeicons.3b6e3706.woff",
-      "publicPath": "/static/fonts/primeicons.3b6e3706.woff"
-    },
     "fonts/primeicons.b0f5d02f.eot": {
       "name": "fonts/primeicons.b0f5d02f.eot",
       "path": "/Users/koheisanno/Documents/SASServicePortal/ServicePortal/frontend/dist/fonts/primeicons.b0f5d02f.eot",
@@ -15,6 +10,11 @@
       "name": "fonts/primeicons.121254f7.ttf",
       "path": "/Users/koheisanno/Documents/SASServicePortal/ServicePortal/frontend/dist/fonts/primeicons.121254f7.ttf",
       "publicPath": "/static/fonts/primeicons.121254f7.ttf"
+    },
+    "fonts/primeicons.3b6e3706.woff": {
+      "name": "fonts/primeicons.3b6e3706.woff",
+      "path": "/Users/koheisanno/Documents/SASServicePortal/ServicePortal/frontend/dist/fonts/primeicons.3b6e3706.woff",
+      "publicPath": "/static/fonts/primeicons.3b6e3706.woff"
     },
     "img/primeicons.25954ab5.svg": {
       "name": "img/primeicons.25954ab5.svg",

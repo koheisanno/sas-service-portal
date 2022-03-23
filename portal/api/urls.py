@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     path("user/", CurrentUserProfileAPIView.as_view(), name="current-user"), #user
+    path("user-isauth/", CurrentUserAuthAPIView.as_view(), name="user-isauthenticated"), #user is authenticated
     path("user-list/", UsersListAPIView.as_view(), name="user-list"), #add officer
     path("officer-list/", OfficersListAPIView.as_view(), name="officer-list"), #add officer
     path("officerships/", OfficershipAPIView.as_view(), name="current-user-officerships"), #officer dashboard

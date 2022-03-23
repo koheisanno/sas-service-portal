@@ -1,7 +1,6 @@
 from rest_framework import serializers 
 from datetime import datetime, timedelta
 from django.utils import timezone
-from django.db.models import Q
 from portal.models import *
 from .mixins import EagerLoadingMixin
 
@@ -62,10 +61,12 @@ class ClubSerializer(serializers.ModelSerializer, EagerLoadingMixin):
     def get_umbrella(self, obj):
         return obj.get_umbrella_display()
     
-    def get_is_member(self, instance):
+    def get_is_member(self, obj):
         if 'request' in self.context and self.context['request'].method == 'GET':
             request = self.context.get("request")
-            return instance.members.filter(pk=request.user.userProfile.pk).exists()
+            if not request.user.is_authenticated:
+                return False
+            return obj.members.filter(pk=request.user.userProfile.pk).exists()
 
     class Meta:
         model = Club
