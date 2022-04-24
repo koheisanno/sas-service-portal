@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-from distutils.util import strtobool
+from .helper import strtobool
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +28,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.getenv("SERVICE_PORTAL_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(strtobool(os.getenv('SERVICE_PORTAL_DEBUG_SETTING', 'False')))
+DEBUG = strtobool(os.getenv('SERVICE_PORTAL_DEBUG_SETTING', 'False'))
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'floating-brook-19253.herokuapp.com', 'www.sasserviceportal.com']
 
@@ -230,4 +230,4 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = bool(strtobool(os.getenv('SERVICE_PORTAL_SSL_REDIRECT', 'True')))
+SECURE_SSL_REDIRECT = strtobool(os.getenv('SERVICE_PORTAL_SSL_REDIRECT', 'True'))
