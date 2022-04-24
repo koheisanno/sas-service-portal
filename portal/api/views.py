@@ -1,13 +1,10 @@
 from rest_framework import generics, status
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework.exceptions import ValidationError, PermissionDenied
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
-from rest_framework.parsers import MultiPartParser, FileUploadParser
-from django.db.models import Q, prefetch_related_objects
 from django.db import connection
 
 from django.core.mail import send_mail
@@ -17,9 +14,6 @@ from .mixins import CreateListMixin
 from .permissions import EventIsOfficer, checkIsOfficer, IsOfficer, IsOfficerOrReadOnly
 from portal.models import *
 from .serializer import *
-
-import requests
-import urllib.parse
 
 from django.db import connection, reset_queries
 import time
