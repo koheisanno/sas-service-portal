@@ -217,7 +217,7 @@ export default {
   mounted() {
     this.getUserData();
     this.getLinks();
-  },
+  }
 };
 </script>
 

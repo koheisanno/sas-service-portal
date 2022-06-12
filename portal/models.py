@@ -58,6 +58,7 @@ class Club(models.Model):
         (NEW_SERVICE_CLUBS, 'New Service Clubs')
     )
 
+
     name = models.CharField(max_length=500, unique=True)
     mission = models.CharField(max_length=200)
     description = models.CharField(max_length=1200, null=True, blank=True)
@@ -70,7 +71,6 @@ class Club(models.Model):
     color_primary = ColorField(default='#FFFFFF')
     color_secondary = ColorField(default='#1A1A1A')
     tags = models.ManyToManyField('Tag', related_name='clubs', blank=True)
-    logo = models.ImageField(null=True, blank=True, upload_to="logos/")
     primary_contact = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name="primary_contact_club", null=True, blank=True)
     instagram = models.CharField(max_length=150, null=True, blank=True)
 

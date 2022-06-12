@@ -5,8 +5,9 @@ from portal.models import *
 from .mixins import EagerLoadingMixin
 
 class LinkSerializer(serializers.ModelSerializer):
+
     class Meta: 
-        model = Link 
+        model = Link
         fields =  '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
@@ -97,7 +98,7 @@ class HomeClubSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Club 
-        fields = ('id', 'events', 'name', 'logo', 'color_primary', 'color_secondary')
+        fields = ('id', 'events', 'name', 'color_primary', 'color_secondary')
 
 class HomeUserProfileSerializer(serializers.ModelSerializer):
     memberClubs = HomeClubSerializer(many = True, read_only = True)
