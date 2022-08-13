@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 from django.contrib.postgres.fields import HStoreField
-from datetime import datetime
 
 from colorfield.fields import ColorField
 
@@ -118,7 +117,7 @@ class Link(models.Model):
         ('officers-only', 'Officers Only'),
     )
 
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
     url = models.CharField(max_length=120)
     category = models.CharField(max_length=120, choices=CATEGORY_CHOICES)
     
