@@ -48,6 +48,10 @@
                             <input v-model="location" type="text" class="form-control">
                         </div>
                     </div>
+                    <div class="mb-2 form-check">
+                        <input type="checkbox" class="form-check-input" id="meetingCheck" v-model="isMeeting">
+                        <label class="form-check-label" for="meetingCheck">Is it a meeting?</label>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -81,6 +85,7 @@ export default {
             location: "",
             date: null,
             hours:null,
+            isMeeting: false,
             overrideHours: false,
             errors: [],
 
@@ -100,6 +105,7 @@ export default {
             this.location = event.location;
             this.date = event.endTime.split(" ")[0];
             this.hours = event.hours;
+            this.isMeeting = event.is_meeting;
 
             const today = new Date();
             let actualHours = Math.round((new Date(today.toDateString() + ' ' + this.endTime)-new Date(today.toDateString() + ' ' + this.startTime))/36000)/100;
@@ -150,7 +156,8 @@ export default {
                                     "date": this.date,
                                     "name": this.eventName,
                                     "location": this.location,
-                                    "hours": this.hours
+                                    "hours": this.hours,
+                                    "is_meeting": this.isMeeting,
                                 }
                         await apiService(endpoint, "PUT", body)
                     }
@@ -162,7 +169,8 @@ export default {
                                     "date": this.date,
                                     "name": this.eventName,
                                     "location": this.location,
-                                    "hours": this.hours
+                                    "hours": this.hours,
+                                    "is_meeting": this.isMeeting,
                                 }
                         await apiService(endpoint, "PUT", body)
                     }
@@ -173,7 +181,8 @@ export default {
                                     "endTime": this.date + " " + this.endTime,
                                     "name": this.eventName,
                                     "location": this.location,
-                                    "hours": this.hours
+                                    "hours": this.hours,
+                                    "is_meeting": this.isMeeting,
                                 }
                         await apiService(endpoint, "PUT", body)
                     }
@@ -185,7 +194,8 @@ export default {
                                 "endTime": this.date + " " + this.endTime,
                                 "name": this.eventName,
                                 "location": this.location,
-                                "hours": this.hours
+                                "hours": this.hours,
+                                "is_meeting": this.isMeeting,
                             }
                     await apiService(endpoint, "PUT", body)
                 }

@@ -88,6 +88,7 @@ class Event(models.Model):
     series = models.UUIDField(blank=True, null=True)
     location = models.CharField(max_length=50)
     hours = models.DecimalField(max_digits=10, decimal_places=2)
+    is_meeting = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['startTime']
