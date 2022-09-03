@@ -240,13 +240,23 @@
       "name": "1d5da9ffcb2af1986bd1.hot-update.json",
       "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/1d5da9ffcb2af1986bd1.hot-update.json",
       "publicPath": "http://0.0.0.0:8086/1d5da9ffcb2af1986bd1.hot-update.json"
+    },
+    "app.c61bb2e15cbc6c84546e.hot-update.js": {
+      "name": "app.c61bb2e15cbc6c84546e.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.c61bb2e15cbc6c84546e.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.c61bb2e15cbc6c84546e.hot-update.js"
+    },
+    "c61bb2e15cbc6c84546e.hot-update.json": {
+      "name": "c61bb2e15cbc6c84546e.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/c61bb2e15cbc6c84546e.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/c61bb2e15cbc6c84546e.hot-update.json"
     }
   },
   "chunks": {
     "app": [
       "bundle.css",
       "bundle.js",
-      "app.1d5da9ffcb2af1986bd1.hot-update.js"
+      "app.c61bb2e15cbc6c84546e.hot-update.js"
     ]
   },
   "publicPath": "http://0.0.0.0:8086/",

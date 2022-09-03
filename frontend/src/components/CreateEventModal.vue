@@ -50,6 +50,10 @@
                 <input type="checkbox" class="form-check-input" id="recurringCheck" v-model="repeats">
                 <label class="form-check-label" for="recurringCheck">Recurring?</label>
             </div>
+            <div class="mb-2 form-check">
+                <input type="checkbox" class="form-check-input" id="meetingCheck" v-model="isMeeting">
+                <label class="form-check-label" for="meetingCheck">Is it a meeting?</label>
+            </div>
             <div v-show="repeats" style="border-radius:10px;" class="border border-primary">
                 <div class="row my-3" v-show="date!=null">
                     <div class="ms-3 col-md-6">
@@ -107,6 +111,7 @@ export default {
             endTime:null,
             location: "",
             repeats: false,
+            isMeeting: false,
             repeatOption: "Daily",
             date: null,
             selectedStyle: {
@@ -218,7 +223,8 @@ export default {
                     "name": this.eventName,
                     "series": null,
                     "location": this.location,
-                    "hours": this.hours
+                    "hours": this.hours,
+                    "is_meeting": this.isMeeting,
                 }                  
                 if(this.repeats){
                     let arrayData = []
