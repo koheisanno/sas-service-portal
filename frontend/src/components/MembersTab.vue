@@ -1,5 +1,6 @@
 <template>
 <div>
+<ConfirmDialogue ref="confirmDialogue"> </ConfirmDialogue>
     <div class="d-flex flex-row mb-3">
         <button type="button" class="btn btn-secondary me-2" @click="copyMembers" v-bind:disabled="selectedMembers.length == 0">
             <span>
@@ -24,6 +25,7 @@
                 Copy Selected Emails
             </span>
         </button>
+        <button type="button" class="btn btn-danger me-2" @click="removeMembers" v-bind:disabled="selectedMembers.length == 0"> Delete Members </button>
     </div>
     <input ref="memberEmails" hidden />
     <div
@@ -84,10 +86,12 @@
 </template>
 
 <script>
+import { apiService } from "../common/api_service";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "primevue/api";
+import ConfirmDialogue from "../components/ConfirmDialogue.vue";
 
 export default {
     name: "MembersTab",
@@ -95,6 +99,7 @@ export default {
         DataTable,
         Column,
         InputText,
+        ConfirmDialogue,
     },
     props: {
         currentClub: {
@@ -152,7 +157,24 @@ export default {
         },
         checkIfOfficer(officers, id){
             return officers.some(e => e.id === id);
-        }
+        },
+        async removeMembers() {
+            const confirm = await this.$refs.confirmDialogue.show({
+                title: "Remove Members",
+                message:
+                    "Are you sure you want to remove the selected members?",
+                okButton: "Remove",
+            });
+            if (confirm) {
+                let endpoint = "/api/club/" + this.currentClub + "/remove-membership/";
+                var memberId = this.selectedMembers.map((a) => a.id);
+                apiService(endpoint, "POST", memberId).then(() => {
+                    this.$emit("success-members", "Member(s) removed successfully.");
+                    console.log(memberId);
+                    this.selectedMembers = [];
+                });
+            }
+        },
     },
     watch: {
         currentClub: function () {

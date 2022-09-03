@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 from django.contrib.postgres.fields import HStoreField
+from django.contrib.postgres.fields import ArrayField
 from datetime import datetime
 
 from colorfield.fields import ColorField

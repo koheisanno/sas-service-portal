@@ -64,6 +64,7 @@ export default {
         getUser(){
             let endpoint = "/api/user/";
             apiService(endpoint).then((data) => {
+                console.log(data);
                 this.user.lastName = data.lastName;
                 this.user.firstName = data.firstName;
                 this.user.classOf = data.classOf;

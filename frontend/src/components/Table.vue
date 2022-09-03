@@ -92,6 +92,7 @@ export default {
         let endpoint = "/api/club/" + this.club.id + "/remove-officer/";
         apiService(endpoint, "POST", this.selected).then(() => {
           this.$emit("removeOfficerSuccess");
+          // console.log(this.selected);
           this.selected = [];
         });
       }

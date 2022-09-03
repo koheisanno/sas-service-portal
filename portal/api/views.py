@@ -164,6 +164,19 @@ class ClubJoinLeaveAPIView(APIView):
 
         return Response(status=status.HTTP_200_OK)
 
+class ClubMemberRemoveAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, pk):
+        club = get_object_or_404(Club, pk=pk)
+        checkIsOfficer(self.request, club)
+
+        members_to_remove = UserProfile.objects.filter(id__in=request.data)
+
+        club.members.remove(*members_to_remove)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 #post remove officer
 class RemoveOfficerAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -421,3 +434,11 @@ class RecordBulkDeleteAPIView(APIView):
 class TagListAPIView(generics.ListAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
+
+'''
+class EventAnnouncementListAPIView():
+    queryset = EventAnnouncement.objects.all()
+    serializer_class = EventAnnouncementSerializer
+
+    def post(self, request):
+'''
