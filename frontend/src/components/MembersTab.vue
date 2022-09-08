@@ -25,7 +25,7 @@
                 Copy Selected Emails
             </span>
         </button>
-        <button type="button" class="btn btn-danger me-2" @click="removeMembers" v-bind:disabled="selectedMembers.length == 0"> Delete Members </button>
+        <button type="button" class="btn btn-danger me-2" @removeMembersSuccess="removeMembersSuccess" @click="removeMembers" v-bind:disabled="selectedMembers.length == 0"> Delete Members </button>
     </div>
     <input ref="memberEmails" hidden />
     <div
@@ -35,6 +35,7 @@
         v-show="currentClub == club.id"
     >
         <DataTable
+            :key="componentKey"
             :value="club.members"
             :rowHover="true"
             v-model:filters="filters"
@@ -119,7 +120,8 @@ export default {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
             },
             selectedMembers: [],
-            copied: false
+            copied: false,
+            componentKey: 0
         };
     },
     methods: {
@@ -171,8 +173,13 @@ export default {
                 apiService(endpoint, "POST", memberId).then(() => {
                     this.$emit("success-members", "Member(s) removed successfully.");
                     console.log(memberId);
+                    console.log("" + this.componentKey + " 1");
                     this.selectedMembers = [];
+                    this.componentKey += 1;
+                    console.log("" + this.componentKey + " 2");
                 });
+                console.log("" + this.componentKey + " 3");
+                // console.log("" + this.componentKey + " 4");
             }
         },
     },

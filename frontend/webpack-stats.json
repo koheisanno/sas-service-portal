@@ -1,0 +1,203 @@
+{
+  "status": "done",
+  "assets": {
+    "fonts/primeicons.b0f5d02f.eot": {
+      "name": "fonts/primeicons.b0f5d02f.eot",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/fonts/primeicons.b0f5d02f.eot",
+      "publicPath": "http://0.0.0.0:8086/fonts/primeicons.b0f5d02f.eot"
+    },
+    "fonts/primeicons.121254f7.ttf": {
+      "name": "fonts/primeicons.121254f7.ttf",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/fonts/primeicons.121254f7.ttf",
+      "publicPath": "http://0.0.0.0:8086/fonts/primeicons.121254f7.ttf"
+    },
+    "fonts/primeicons.3b6e3706.woff": {
+      "name": "fonts/primeicons.3b6e3706.woff",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/fonts/primeicons.3b6e3706.woff",
+      "publicPath": "http://0.0.0.0:8086/fonts/primeicons.3b6e3706.woff"
+    },
+    "img/primeicons.25954ab5.svg": {
+      "name": "img/primeicons.25954ab5.svg",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/img/primeicons.25954ab5.svg",
+      "publicPath": "http://0.0.0.0:8086/img/primeicons.25954ab5.svg"
+    },
+    "img/color.c7a33805.png": {
+      "name": "img/color.c7a33805.png",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/img/color.c7a33805.png",
+      "publicPath": "http://0.0.0.0:8086/img/color.c7a33805.png"
+    },
+    "img/logo.39fe7e34.png": {
+      "name": "img/logo.39fe7e34.png",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/img/logo.39fe7e34.png",
+      "publicPath": "http://0.0.0.0:8086/img/logo.39fe7e34.png"
+    },
+    "bundle.css": {
+      "name": "bundle.css",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/bundle.css",
+      "publicPath": "http://0.0.0.0:8086/bundle.css"
+    },
+    "bundle.js": {
+      "name": "bundle.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/bundle.js",
+      "publicPath": "http://0.0.0.0:8086/bundle.js"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/index.html",
+      "publicPath": "http://0.0.0.0:8086/index.html"
+    },
+    "favicon.ico": {
+      "name": "favicon.ico",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/favicon.ico",
+      "publicPath": "http://0.0.0.0:8086/favicon.ico"
+    },
+    "app.90356097be6eeb60f8f8.hot-update.js": {
+      "name": "app.90356097be6eeb60f8f8.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.90356097be6eeb60f8f8.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.90356097be6eeb60f8f8.hot-update.js"
+    },
+    "90356097be6eeb60f8f8.hot-update.json": {
+      "name": "90356097be6eeb60f8f8.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/90356097be6eeb60f8f8.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/90356097be6eeb60f8f8.hot-update.json"
+    },
+    "app.65800fb61e68a80baf50.hot-update.js": {
+      "name": "app.65800fb61e68a80baf50.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.65800fb61e68a80baf50.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.65800fb61e68a80baf50.hot-update.js"
+    },
+    "65800fb61e68a80baf50.hot-update.json": {
+      "name": "65800fb61e68a80baf50.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/65800fb61e68a80baf50.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/65800fb61e68a80baf50.hot-update.json"
+    },
+    "d89183aa45b8d0cbcb5d.hot-update.json": {
+      "name": "d89183aa45b8d0cbcb5d.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/d89183aa45b8d0cbcb5d.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/d89183aa45b8d0cbcb5d.hot-update.json"
+    },
+    "app.5062ecbeeecea582c857.hot-update.js": {
+      "name": "app.5062ecbeeecea582c857.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.5062ecbeeecea582c857.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.5062ecbeeecea582c857.hot-update.js"
+    },
+    "5062ecbeeecea582c857.hot-update.json": {
+      "name": "5062ecbeeecea582c857.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/5062ecbeeecea582c857.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/5062ecbeeecea582c857.hot-update.json"
+    },
+    "app.be6dea7eaa3f180e6459.hot-update.js": {
+      "name": "app.be6dea7eaa3f180e6459.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.be6dea7eaa3f180e6459.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.be6dea7eaa3f180e6459.hot-update.js"
+    },
+    "be6dea7eaa3f180e6459.hot-update.json": {
+      "name": "be6dea7eaa3f180e6459.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/be6dea7eaa3f180e6459.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/be6dea7eaa3f180e6459.hot-update.json"
+    },
+    "412c5a1f8aa767751ed5.hot-update.json": {
+      "name": "412c5a1f8aa767751ed5.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/412c5a1f8aa767751ed5.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/412c5a1f8aa767751ed5.hot-update.json"
+    },
+    "app.953e9478a92499644254.hot-update.js": {
+      "name": "app.953e9478a92499644254.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.953e9478a92499644254.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.953e9478a92499644254.hot-update.js"
+    },
+    "953e9478a92499644254.hot-update.json": {
+      "name": "953e9478a92499644254.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/953e9478a92499644254.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/953e9478a92499644254.hot-update.json"
+    },
+    "f737a3db651097a2d261.hot-update.json": {
+      "name": "f737a3db651097a2d261.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/f737a3db651097a2d261.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/f737a3db651097a2d261.hot-update.json"
+    },
+    "app.ade71d83db25877f9765.hot-update.js": {
+      "name": "app.ade71d83db25877f9765.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.ade71d83db25877f9765.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.ade71d83db25877f9765.hot-update.js"
+    },
+    "ade71d83db25877f9765.hot-update.json": {
+      "name": "ade71d83db25877f9765.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/ade71d83db25877f9765.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/ade71d83db25877f9765.hot-update.json"
+    },
+    "16637eb11764cef1d40a.hot-update.json": {
+      "name": "16637eb11764cef1d40a.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/16637eb11764cef1d40a.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/16637eb11764cef1d40a.hot-update.json"
+    },
+    "a385a6b3ea92d98c6255.hot-update.json": {
+      "name": "a385a6b3ea92d98c6255.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/a385a6b3ea92d98c6255.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/a385a6b3ea92d98c6255.hot-update.json"
+    },
+    "f21a55b512ab79cdd1d4.hot-update.json": {
+      "name": "f21a55b512ab79cdd1d4.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/f21a55b512ab79cdd1d4.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/f21a55b512ab79cdd1d4.hot-update.json"
+    },
+    "app.9c199b088a30f72af642.hot-update.js": {
+      "name": "app.9c199b088a30f72af642.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.9c199b088a30f72af642.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.9c199b088a30f72af642.hot-update.js"
+    },
+    "9c199b088a30f72af642.hot-update.json": {
+      "name": "9c199b088a30f72af642.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/9c199b088a30f72af642.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/9c199b088a30f72af642.hot-update.json"
+    },
+    "3ce866f20fec51fcd64b.hot-update.json": {
+      "name": "3ce866f20fec51fcd64b.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/3ce866f20fec51fcd64b.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/3ce866f20fec51fcd64b.hot-update.json"
+    },
+    "86656ee6202e1b370944.hot-update.json": {
+      "name": "86656ee6202e1b370944.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/86656ee6202e1b370944.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/86656ee6202e1b370944.hot-update.json"
+    },
+    "app.c2d47b457d8dcc97ec0d.hot-update.js": {
+      "name": "app.c2d47b457d8dcc97ec0d.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.c2d47b457d8dcc97ec0d.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.c2d47b457d8dcc97ec0d.hot-update.js"
+    },
+    "c2d47b457d8dcc97ec0d.hot-update.json": {
+      "name": "c2d47b457d8dcc97ec0d.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/c2d47b457d8dcc97ec0d.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/c2d47b457d8dcc97ec0d.hot-update.json"
+    },
+    "dff2dbb79445dc8a842e.hot-update.json": {
+      "name": "dff2dbb79445dc8a842e.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/dff2dbb79445dc8a842e.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/dff2dbb79445dc8a842e.hot-update.json"
+    },
+    "0ea92537b95c341d7563.hot-update.json": {
+      "name": "0ea92537b95c341d7563.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/0ea92537b95c341d7563.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/0ea92537b95c341d7563.hot-update.json"
+    },
+    "app.9b3600b85ab7d41d4ab9.hot-update.js": {
+      "name": "app.9b3600b85ab7d41d4ab9.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.9b3600b85ab7d41d4ab9.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.9b3600b85ab7d41d4ab9.hot-update.js"
+    },
+    "9b3600b85ab7d41d4ab9.hot-update.json": {
+      "name": "9b3600b85ab7d41d4ab9.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/9b3600b85ab7d41d4ab9.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/9b3600b85ab7d41d4ab9.hot-update.json"
+    }
+  },
+  "chunks": {
+    "app": [
+      "bundle.css",
+      "bundle.js",
+      "app.9b3600b85ab7d41d4ab9.hot-update.js"
+    ]
+  },
+  "publicPath": "http://0.0.0.0:8086/"
+}
