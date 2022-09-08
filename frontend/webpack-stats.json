@@ -1,5 +1,5 @@
 {
-  "status": "compile",
+  "status": "done",
   "assets": {
     "fonts/primeicons.b0f5d02f.eot": {
       "name": "fonts/primeicons.b0f5d02f.eot",
@@ -200,13 +200,23 @@
       "name": "d8ffb99ba1f0708489fa.hot-update.json",
       "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/d8ffb99ba1f0708489fa.hot-update.json",
       "publicPath": "http://0.0.0.0:8086/d8ffb99ba1f0708489fa.hot-update.json"
+    },
+    "app.c6cc3fa4871d766c1ead.hot-update.js": {
+      "name": "app.c6cc3fa4871d766c1ead.hot-update.js",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/app.c6cc3fa4871d766c1ead.hot-update.js",
+      "publicPath": "http://0.0.0.0:8086/app.c6cc3fa4871d766c1ead.hot-update.js"
+    },
+    "c6cc3fa4871d766c1ead.hot-update.json": {
+      "name": "c6cc3fa4871d766c1ead.hot-update.json",
+      "path": "/Users/goel706185/LocalSASServicePortal/sas-service-portal/frontend/dist/c6cc3fa4871d766c1ead.hot-update.json",
+      "publicPath": "http://0.0.0.0:8086/c6cc3fa4871d766c1ead.hot-update.json"
     }
   },
   "chunks": {
     "app": [
       "bundle.css",
       "bundle.js",
-      "app.d8ffb99ba1f0708489fa.hot-update.js"
+      "app.c6cc3fa4871d766c1ead.hot-update.js"
     ]
   },
   "publicPath": "http://0.0.0.0:8086/"
