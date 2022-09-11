@@ -173,7 +173,7 @@
           role="tabpanel"
           aria-labelledby="v-pills-members-tab"
         >
-          <MembersTab :clubs="clubs" :currentClub="currentClub" />
+          <MembersTab :clubs="clubs" :currentClub="currentClub" @success-members="success" />
         </div>
         <div
           class="tab-pane fade"
