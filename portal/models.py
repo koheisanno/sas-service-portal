@@ -50,10 +50,10 @@ class Club(models.Model):
 
     UMBRELLA_CHOICES = (
         (EDUCATION_FOR_ALL, 'Education for All'),
-        (GLOBAL_ISSUES, 'Global Issues'),
+        (GLOBAL_ISSUES, 'Environmental'),
         (SAS_CENTRIC, 'SAS-Centric'),
-        (HELP_FOR_DISABLED_AND_ILL, 'Help for the Disabled and Ill'),
-        (POVERTY_ERADICATION, 'Poverty Eradication'),
+        (HELP_FOR_DISABLED_AND_ILL, 'Aid and Accessibility'),
+        (POVERTY_ERADICATION, 'Social Equity'),
         (NEW_SERVICE_CLUBS, 'New Service Clubs')
     )
 

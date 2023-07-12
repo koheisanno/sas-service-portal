@@ -86,7 +86,7 @@
                         id="PE"
                     />
                     <label class="form-check-label text-secondary" for="PE">
-                        Poverty Eradication
+                        Social Equity
                     </label>
                 </div>
                 <div class="form-check">
@@ -99,7 +99,7 @@
                         id="H4DI"
                     />
                     <label class="form-check-label text-secondary" for="H4DI">
-                        Help for the Disabled and Ill
+                        Aid and Accessibility
                     </label>
                 </div>
                 <div class="form-check">
@@ -112,7 +112,7 @@
                         id="GI"
                     />
                     <label class="form-check-label text-secondary" for="GI">
-                        Global Issues
+                        Environmental
                     </label>
                 </div>
                 <div class="form-check">
