@@ -1,4 +1,3 @@
-## Venv setup
 ### Create virtual environment
 https://docs.python.org/3/library/venv.html
 
